@@ -1,104 +1,209 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buat Kamu</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hai, Gianni Tardellie</title>
+<style>
+  :root{
+    --bg:#ffd6e8;
+    --accent:#d14a7b;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: radial-gradient(circle at 10% 10%, #ffeaf2, var(--bg) 40%);
+    color: #5b1b3b;
+    min-height:100vh;
+    display:flex;
+    align-items:start;
+    justify-content:center;
+    padding:50px 24px;
+  }
+  .wrap{
+    width:100%;
+    max-width:900px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.9));
+    border-radius:18px;
+    padding:22px;
+    box-shadow: 0 10px 30px rgba(209,74,123,0.12);
+    position:relative;
+    overflow:hidden;
+  }
+  header{
+    text-align:center;
+    margin-bottom:20px;
+  }
+  h1{
+    margin:6px 0 0;
+    font-size:28px;
+    letter-spacing:0.3px;
+  }
+  p.lead{
+    margin:6px 0 18px;
+    color:#7a2b52;
+  }
 
-    <!-- Font kawaii -->
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  .content{
+    display:grid;
+    grid-template-columns: 1fr 360px;
+    gap:18px;
+    align-items:start;
+  }
 
-    <style>
-        body{
-            background:#ffc6dc;
-            font-family:"Quicksand", sans-serif;
-            margin:0;
-            text-align:center;
-        }
+  .card{
+    background:var(--card);
+    padding:14px;
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(181,72,119,0.06);
+  }
 
-        h1{
-            margin-top: 25px;    /* judul lebih naik */
-            margin-bottom: 14px; 
-            font-size:30px;
-            font-weight:600;
-        }
+  .message{
+    min-height:320px;
+    padding:12px;
+    border-radius:10px;
+    border:2px dashed rgba(209,74,123,0.12);
+    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+  }
+  .controls{display:flex; gap:8px; margin-top:10px; align-items:center;}
 
-        .container{
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 10px 20px;
-        }
+  .upload-box{
+    text-align:center;
+    padding:12px;
+    border-radius:10px;
+    border:2px dashed rgba(81,8,35,0.06);
+  }
+  #preview{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    border-radius:10px;
+    background:linear-gradient(#fff,#f9f9f9);
+    display:block;
+    margin-bottom:8px;
+  }
 
-        /* BOX UCAPAN */
-        .message{
-            min-height:450px; /* lebih panjang */
-            padding:20px;
-            border-radius:16px;
-            border:2px dashed rgba(209,74,123,0.30);
-            background: rgba(255,255,255,0.65);
-            backdrop-filter: blur(4px);
-            box-shadow: 0 8px 18px rgba(209,74,123,0.15);
-            transition: 0.3s ease;
-            margin-bottom: 30px;
-            position: relative;
-        }
+  .btn{
+    background:var(--accent);
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .btn.ghost{ background:transparent; color:var(--accent); border:1px solid rgba(209,74,123,0.12); }
 
-        .message:hover{
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(209,74,123,0.22);
-        }
+  footer{ 
+    text-align:center; 
+    margin-top:20px; 
+    color:#7a2b52; 
+    font-size:13px;
+    line-height:1.5;
+  }
 
-        /* FOTO BOX */
-        .photo-box{
-            width:100%;
-            height:240px;
-            background:rgba(255,255,255,0.7);
-            border-radius:12px;
-            border:2px dashed #d14a7b;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            margin-bottom:20px;
-        }
-
-        /* FOOTER */
-        .footer{
-            margin-top:28px;
-            padding-bottom:20px;
-            font-size:14px;
-            opacity:0.7;
-            line-height:1.8;
-        }
-    </style>
+  @media(max-width:880px){
+    .content{ grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 
 <body>
-    
-    <h1>Untuk Kamu</h1>
+  <div class="wrap">
 
-    <div class="container">
+    <header>
+      <h1 id="title">Teruntuk kamu 🤞 🐷</h1>
+      <p class="lead">Klik "Edit" untuk mengganti kata-kata. Upload foto kenanganmu di samping ya 💖</p>
+    </header>
 
-        <!-- FOTO -->
-        <div class="photo-box">
-            <p>Upload foto kamu nanti ke sini 💗</p>
+    <div class="content">
+      <div class="card">
+        <div class="message" id="message" contenteditable="false">
+          <h2>Hai...</h2>
+          <p>Terima kasih 💕</p>
         </div>
 
-        <!-- UCAPAN -->
-        <div class="message">
-            <p>Tulis pesanmu di sini ya… 💞</p>
-            <p>Kamu bisa isi sepanjang yang kamu mau.  
-            Box ini memang aku buat lebih panjang supaya muat banyak kata manis dari kamu 🌸</p>
+        <div class="controls">
+          <button id="editBtn" class="btn ghost">✏️ Edit</button>
+          <button id="saveBtn" class="btn" style="display:none">💾 Simpan</button>
+          <button id="resetBtn" class="btn ghost">Reset Teks</button>
         </div>
+      </div>
 
-        <!-- FOOTER DI TENGAH & BARIS BARU -->
-       <div class="footer">
-            Made with lots of piggy love 🐷✨  
-        <br>
-            © @hai_dikdik
-</div>
-
-
+      <div class="card upload-box">
+        <img id="preview" src="https://i.postimg.cc/8z5V4YpG/placeholder.png" alt="preview">
+        <input id="fileinput" type="file" accept="image/*" style="width:100%; margin-bottom:8px" />
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button id="clearPic" class="btn ghost">Hapus Foto</button>
+          <button id="downloadBtn" class="btn">Download Halaman</button>
+        </div>
+        <p style="margin-top:8px; font-size:13px; color:#7a2b52;">*Preview di browser. Upload tidak tersimpan ke server.</p>
+      </div>
     </div>
+
+    <footer>
+      Made with lots of piggy love 🐷 💕  
+      <br>
+      © @hai_dikdik
+    </footer>
+
+  </div>
+
+<script>
+  const editBtn = document.getElementById('editBtn');
+  const saveBtn = document.getElementById('saveBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const msg = document.getElementById('message');
+  const defaultText = msg.innerHTML;
+
+  editBtn.addEventListener('click', () => {
+    msg.contentEditable = "true";
+    msg.focus();
+    editBtn.style.display = 'none';
+    saveBtn.style.display = 'inline-block';
+  });
+  saveBtn.addEventListener('click', () => {
+    msg.contentEditable = "false";
+    editBtn.style.display = 'inline-block';
+    saveBtn.style.display = 'none';
+  });
+  resetBtn.addEventListener('click', () => {
+    if(confirm('Reset teks ke versi awal?')) msg.innerHTML = defaultText;
+  });
+
+  const fileinput = document.getElementById('fileinput');
+  const preview = document.getElementById('preview');
+  const clearPic = document.getElementById('clearPic');
+
+  fileinput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if(!file) return;
+    if(!file.type.startsWith('image/')) { 
+      alert('Pilih file gambar ya.'); 
+      return; 
+    }
+    const reader = new FileReader();
+    reader.onload = () => preview.src = reader.result;
+    reader.readAsDataURL(file);
+  });
+
+  clearPic.addEventListener('click', () => {
+    preview.src = 'https://i.postimg.cc/8z5V4YpG/placeholder.png';
+    fileinput.value = '';
+  });
+
+  document.getElementById('downloadBtn').addEventListener('click', () => {
+    const blob = new Blob([document.documentElement.outerHTML], {type:'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; 
+    a.download = 'ucapan-perpisahan.html';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+</script>
 
 </body>
 </html>
