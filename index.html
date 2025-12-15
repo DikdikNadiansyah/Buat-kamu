@@ -109,6 +109,27 @@ body{
   justify-content:center;
   padding:48px 18px;
   color:var(--text);
+  position:relative;
+}
+
+/* ================= SALJU ================= */
+.snow{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background-image:
+    radial-gradient(6px 6px at 20% 10%, rgba(255,255,255,.8) 50%, transparent 51%),
+    radial-gradient(4px 4px at 80% 20%, rgba(255,255,255,.6) 50%, transparent 51%),
+    radial-gradient(5px 5px at 50% 30%, rgba(255,255,255,.7) 50%, transparent 51%),
+    radial-gradient(3px 3px at 10% 40%, rgba(255,255,255,.5) 50%, transparent 51%),
+    radial-gradient(4px 4px at 90% 50%, rgba(255,255,255,.6) 50%, transparent 51%);
+  animation:snowMove 18s linear infinite;
+}
+
+@keyframes snowMove{
+  from{ background-position:0 0; }
+  to{ background-position:0 100vh; }
 }
 
 .wrap{
@@ -119,7 +140,7 @@ body{
   border-radius:20px;
   box-shadow:0 12px 40px rgba(209,74,123,.18);
   position:relative;
-  overflow:visible;
+  z-index:2;
 }
 
 header{text-align:center;margin-bottom:24px;}
@@ -152,12 +173,30 @@ h1{
 }
 
 .polaroid{
-  background:white;
-  padding:14px;
-  border-radius:14px;
-  box-shadow:0 14px 30px rgba(0,0,0,.18);
+  background:linear-gradient(145deg,#ffe4ef,#ffd1e6);
+  padding:16px;
+  border-radius:16px;
+  box-shadow:0 18px 40px rgba(209,74,123,.25);
   transform:rotate(1deg);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
+
+.tape-wrap{position:relative;}
+
+.tape{
+  position:absolute;
+  width:70px;
+  height:26px;
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 6px 14px rgba(0,0,0,.15);
+  z-index:3;
+}
+
+.tape-left{top:-10px;left:18px;transform:rotate(-12deg);}
+.tape-right{top:-10px;right:18px;transform:rotate(10deg);}
 
 #preview{
   width:100%;
@@ -173,32 +212,6 @@ footer{
   opacity:.8;
 }
 
-/* ================= DECORATIONS ================= */
-.decor{
-  position:absolute;
-  pointer-events:none;
-  opacity:.9;
-  animation:float 6s ease-in-out infinite;
-  z-index:1;
-}
-
-.wrap>*:not(.decor){position:relative;z-index:2;}
-
-.decor.small{width:60px;}
-.decor.medium{width:90px;}
-.decor.large{width:120px;}
-
-.decor.top-left{top:6px;left:6px;}
-.decor.top-right{top:6px;right:6px;}
-.decor.bottom-left{bottom:6px;left:6px;}
-.decor.bottom-right{bottom:6px;right:6px;}
-.decor.center-right{top:50%;right:6px;transform:translateY(-50%);}
-
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-16px);}
-}
-
 @media(max-width:880px){
   .content{grid-template-columns:1fr;}
   h1{font-size:40px;}
@@ -207,6 +220,8 @@ footer{
 </head>
 
 <body>
+
+<div class="snow"></div>
 
 <!-- ================= START SCREEN ================= -->
 <div id="startScreen">
@@ -224,15 +239,7 @@ footer{
   <source src="alamak.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ================= MAIN CONTENT ================= -->
 <div class="wrap">
-
-  <!-- DECOR -->
-  <img src="babi_bunga.png" class="decor small top-left">
-  <img src="babi_ketawa.gif" class="decor medium top-right">
-  <img src="chef_babi.png" class="decor medium bottom-left">
-  <img src="cisss.gif" class="decor small bottom-right">
-  <img src="pose_babi.png" class="decor large center-right">
 
   <header>
     <h1>Untuk kamu 💗</h1>
@@ -248,8 +255,12 @@ footer{
       </div>
     </div>
 
-    <div class="card polaroid">
-      <img id="preview" src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg">
+    <div class="card polaroid tape-wrap">
+      <span class="tape tape-left"></span>
+      <span class="tape tape-right"></span>
+      <img id="preview"
+        src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg"
+        alt="Foto kita">
     </div>
 
   </div>
@@ -268,9 +279,8 @@ const audio = document.getElementById("bgm");
 envelope.addEventListener("click", () => {
   audio.play();
   envelope.classList.add("open");
-
-  setTimeout(() => start.style.opacity = "0", 600);
-  setTimeout(() => start.style.display = "none", 1000);
+  setTimeout(()=>start.style.opacity="0",600);
+  setTimeout(()=>start.style.display="none",1000);
 });
 </script>
 
