@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Gianni Tardellie</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&family=Patrick+Hand&display=swap" rel="stylesheet">
+
 
 <style>
 /* ================= START SCREEN ================= */
@@ -183,13 +184,14 @@ h1{
 }
 
 .message p{
-  font-size: 15.5px;
-  line-height: 1.85;
-  letter-spacing: 0.2px;
-  margin-bottom: 14px;
+  font-family: "Patrick Hand", cursive;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.4px;
+  margin-bottom: 16px;
   color: #6a1f3d;
+  text-align: justify;
 }
-
 
 .polaroid{
   background:linear-gradient(145deg,#ffe4ef,#ffd1e6);
@@ -275,11 +277,18 @@ footer{
   .content{grid-template-columns:1fr;}
   h1{font-size:40px;}
 }
-  @media(max-width:480px){
+@media(max-width:480px){
   .message p{
     font-size: 15px;
     line-height: 1.8;
   }
+@media(max-width:480px){
+  .message p{
+    text-align: justify;
+    hyphens: auto;
+  }
+}
+
   .message h2{
     font-size: 30px;
   }
@@ -380,6 +389,7 @@ for(let i=0;i<40;i++){
 
 </body>
 </html>
+
 
 
 
