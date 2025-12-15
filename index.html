@@ -8,6 +8,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
 
 <style>
+  #startScreen{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg, #ffe4ef, #ffd1e6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.start-card{
+  background:white;
+  padding:24px 32px;
+  border-radius:18px;
+  box-shadow:0 12px 30px rgba(209,74,123,0.25);
+  font-family:"Sacramento", cursive;
+  font-size:36px;
+  color:#d14a7b;
+  animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.05); }
+  100%{ transform:scale(1); }
+}
+
   :root {
     --pink1: #ffe4ef;
     --pink2: #ffd1e6;
@@ -125,16 +152,16 @@
 </head>
 
 <body>
+
+<div id="startScreen">
+  <div class="start-card">
+    <p>Sentuh layar 🐷</p>
+  </div>
+</div>
+
 <audio id="bgm" loop>
   <source src="alamak.mp3" type="audio/mpeg">
 </audio>
-
-<script>
-  document.addEventListener("click", () => {
-    const audio = document.getElementById("bgm");
-    audio.play();
-  }, { once: true });
-</script>
   
 <div class="wrap">
 
@@ -182,9 +209,20 @@
   </footer>
 
 </div>
+  
+<script>
+  const start = document.getElementById("startScreen");
+  const audio = document.getElementById("bgm");
+
+  start.addEventListener("click", () => {
+    audio.play();
+    start.style.display = "none";
+  });
+</script>
 
 </body>
 </html>
+
 
 
 
