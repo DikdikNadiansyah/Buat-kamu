@@ -8,7 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
 
 <style>
-  #startScreen{
+/* ================= START SCREEN ================= */
+#startScreen{
   position:fixed;
   inset:0;
   background:linear-gradient(180deg, #ffe4ef, #ffd1e6);
@@ -18,219 +19,215 @@
   z-index:9999;
 }
 
-.start-card{
+/* ================= ENVELOPE ================= */
+.envelope{
+  position: relative;
+  width: 280px;
+  height: 180px;
+  background: #ffd1e6;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(209,74,123,0.35);
+  cursor: pointer;
+  animation: floatEnvelope 2.4s ease-in-out infinite;
+}
+
+.envelope:active{
+  transform: scale(0.95);
+}
+
+.envelope::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#ffb8d8;
+  clip-path: polygon(0 0, 50% 55%, 100% 0);
+  border-radius:14px 14px 0 0;
+}
+
+.envelope.open::before{
+  animation: openFlap 0.6s forwards;
+}
+
+@keyframes openFlap{
+  from{ clip-path: polygon(0 0, 50% 55%, 100% 0); }
+  to{ clip-path: polygon(0 0, 50% 0%, 100% 0); }
+}
+
+/* ================= LETTER ================= */
+.letter{
+  position:absolute;
+  inset:12px;
   background:white;
-  padding:24px 32px;
-  border-radius:18px;
-  box-shadow:0 12px 30px rgba(209,74,123,0.25);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+  animation:pulse 1.6s infinite;
+}
+
+.letter-text{
+  text-align:center;
   font-family:"Sacramento", cursive;
-  font-size:36px;
+  font-size:30px;
   color:#d14a7b;
-  animation:pulse 1.8s infinite;
+}
+
+.letter-text span{
+  display:block;
+  margin-top:6px;
+  font-size:14px;
+  font-family:"Poppins", sans-serif;
+  opacity:.7;
 }
 
 @keyframes pulse{
-  0%{ transform:scale(1); }
+  0%,100%{ transform:scale(1); }
   50%{ transform:scale(1.05); }
-  100%{ transform:scale(1); }
 }
 
-  :root {
-    --pink1: #ffe4ef;
-    --pink2: #ffd1e6;
-    --pink3: #ffb8d8;
-    --text: #6a1f3d;
-    --card: #ffffffd9;
-    --accent: #d14a7b;
-  }
-
-  body {
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(180deg, var(--pink1), var(--pink2) 40%, var(--pink3));
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 48px 18px;
-    color: var(--text);
-    position: relative;
-    overflow-x: hidden;
-    animation: fadein 1.4s ease;
-  }
-
-  @keyframes fadein {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .wrap {
-    width: 100%;
-    max-width: 900px;
-    background: var(--card);
-    padding: 26px;
-    border-radius: 20px;
-    box-shadow: 0 12px 40px rgba(209, 74, 123, 0.18);
-    backdrop-filter: blur(5px);
-    position: relative;
-    overflow: visible;
-  }
-
-  header {
-    text-align: center;
-    margin-bottom: 24px;
-  }
-
-  h1 {
-    font-family: "Sacramento", cursive;
-    font-size: 52px;
-    margin: 0;
-    color: var(--accent);
-    text-shadow: 0 2px 6px rgba(209, 74, 123, 0.25);
-  }
-
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 330px;
-    gap: 20px;
-  }
-
-  .card {
-    background: #ffffffcb;
-    padding: 16px;
-    border-radius: 14px;
-    box-shadow: 0 8px 22px rgba(209, 74, 123, 0.12);
-  }
-
-  .message {
-    min-height: 380px;
-    padding: 14px;
-    border-radius: 12px;
-    border: 2px dashed rgba(209, 74, 123, 0.16);
-    background: linear-gradient(180deg, #ffffffaa, #ffffff70);
-    line-height: 1.6;
-  }
-
-  .polaroid {
-  background: white;
-  padding: 14px;
-  border-radius: 14px;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-  transform: rotate(1deg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@keyframes floatEnvelope{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-12px); }
 }
 
-  .polaroid:hover {
-  transform: rotate(0deg) scale(1.02);
+/* ================= MAIN THEME ================= */
+:root{
+  --pink1:#ffe4ef;
+  --pink2:#ffd1e6;
+  --pink3:#ffb8d8;
+  --accent:#d14a7b;
+  --text:#6a1f3d;
 }
 
-  #preview {
-  width: 100%;
-  max-height: 420px;
-  height: auto;
-  border-radius: 8px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
+body{
+  margin:0;
+  font-family:"Poppins",sans-serif;
+  background:linear-gradient(180deg,var(--pink1),var(--pink2) 40%,var(--pink3));
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:48px 18px;
+  color:var(--text);
 }
 
-  footer {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    opacity: 0.8;
-  }
+.wrap{
+  max-width:900px;
+  width:100%;
+  background:#ffffffd9;
+  padding:26px;
+  border-radius:20px;
+  box-shadow:0 12px 40px rgba(209,74,123,.18);
+  position:relative;
+  overflow:visible;
+}
 
-  @media (max-width: 880px) {
-    .content {
-      grid-template-columns: 1fr;
-    }
-    h1 { font-size: 40px; }
-  }
-  /* === DECORATIONS === */
+header{text-align:center;margin-bottom:24px;}
+
+h1{
+  font-family:"Sacramento",cursive;
+  font-size:52px;
+  color:var(--accent);
+}
+
+.content{
+  display:grid;
+  grid-template-columns:1fr 330px;
+  gap:20px;
+}
+
+.card{
+  background:#ffffffcb;
+  padding:16px;
+  border-radius:14px;
+  box-shadow:0 8px 22px rgba(209,74,123,.12);
+}
+
+.message{
+  min-height:380px;
+  border:2px dashed rgba(209,74,123,.16);
+  padding:14px;
+  border-radius:12px;
+  line-height:1.6;
+}
+
+.polaroid{
+  background:white;
+  padding:14px;
+  border-radius:14px;
+  box-shadow:0 14px 30px rgba(0,0,0,.18);
+  transform:rotate(1deg);
+}
+
+#preview{
+  width:100%;
+  max-height:420px;
+  object-fit:contain;
+  border-radius:8px;
+}
+
+footer{
+  text-align:center;
+  margin-top:20px;
+  font-size:14px;
+  opacity:.8;
+}
+
+/* ================= DECORATIONS ================= */
 .decor{
   position:absolute;
   pointer-events:none;
   opacity:.9;
-  animation: float 6s ease-in-out infinite;
+  animation:float 6s ease-in-out infinite;
   z-index:1;
 }
-  .wrap > *:not(.decor){
-  position: relative;
-  z-index: 2;
-}
-.decor:nth-child(1){ animation-duration: 7s; }
-.decor:nth-child(2){ animation-duration: 5s; }
-.decor:nth-child(3){ animation-duration: 6.5s; }
-.decor:nth-child(4){ animation-duration: 4.5s; }
-.decor:nth-child(5){ animation-duration: 8s; }
 
-.decor.small{ width:60px; }
-.decor.medium{ width:90px; }
-.decor.large{ width:120px; }
+.wrap>*:not(.decor){position:relative;z-index:2;}
 
-.decor.top-left{
-  top:6px;
-  left:6px;
-}
+.decor.small{width:60px;}
+.decor.medium{width:90px;}
+.decor.large{width:120px;}
 
-.decor.top-right{
-  top:6px;
-  right:6px;
-}
-
-.decor.bottom-left{
-  bottom:6px;
-  left:6px;
-}
-
-.decor.bottom-right{
-  bottom:6px;
-  right:6px;
-}
-
-  .decor.center-left{
-  top:50%;
-  left:-40px;
-  transform:translateY(-50%);
-}
-
-.decor.center-right{
-  top:50%;
-  right:6px;
-  transform:translateY(-50%);
-}
+.decor.top-left{top:6px;left:6px;}
+.decor.top-right{top:6px;right:6px;}
+.decor.bottom-left{bottom:6px;left:6px;}
+.decor.bottom-right{bottom:6px;right:6px;}
+.decor.center-right{top:50%;right:6px;transform:translateY(-50%);}
 
 @keyframes float{
-  0%,100%{ transform:translateY(0); }
-  50%{ transform:translateY(-16px); }
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-16px);}
 }
 
-@media(max-width:768px){
-  .decor{
-    opacity:.6;
-  }
+@media(max-width:880px){
+  .content{grid-template-columns:1fr;}
+  h1{font-size:40px;}
 }
-
 </style>
 </head>
 
 <body>
 
+<!-- ================= START SCREEN ================= -->
 <div id="startScreen">
-  <div class="start-card">
-    <p>Sentuh layar 🐷</p>
+  <div class="envelope">
+    <div class="letter">
+      <div class="letter-text">
+        <p>Buka pesan ini 💌</p>
+        <span>@hai_dikdik</span>
+      </div>
+    </div>
   </div>
 </div>
 
 <audio id="bgm" loop>
   <source src="alamak.mp3" type="audio/mpeg">
 </audio>
-  
+
+<!-- ================= MAIN CONTENT ================= -->
 <div class="wrap">
 
-  <!-- DECORATIONS -->
+  <!-- DECOR -->
   <img src="babi_bunga.png" class="decor small top-left">
   <img src="babi_ketawa.gif" class="decor medium top-right">
   <img src="chef_babi.png" class="decor medium bottom-left">
@@ -243,62 +240,39 @@
 
   <div class="content">
 
-    <!-- KIRI -->
     <div class="card">
       <div class="message">
-
-        <!-- ✨ TULIS PESANMU DI SINI SAJA ✨ -->
         <h2>Hai…</h2>
-        <p>
-          Terima kasih karena pernah menjadi seseorang yang sangat berarti.  
-          Kamu adalah bagian kecil tetapi indah dalam hidupku.  
-          Semoga kamu bahagia, ke mana pun langkahmu nanti 💗  
-        </p>
-        <p>
-          Dunia ini luas, kita tak pernah tahu akan bertemu siapa lagi.  
-          Tapi percayalah… rasa baik itu tidak hilang.  
-        </p>
-        <p>
-          Semoga hari-harimu penuh cinta, tawa, dan hal-hal manis  
-          yang selalu kamu inginkan ✨
-        </p>
-
+        <p>Terima kasih karena pernah menjadi seseorang yang sangat berarti.</p>
+        <p>Semoga hari-harimu selalu penuh cinta dan tawa ✨</p>
       </div>
     </div>
 
-    <!-- KANAN -->
     <div class="card polaroid">
-    <img id="preview"
-  src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg"
-  alt="Foto kita">  
+      <img id="preview" src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg">
     </div>
 
   </div>
 
   <footer>
-    Made with lots of piggy love 🐷✨  
-    <br>@hai_dikdik
+    Made with lots of piggy love 🐷✨<br>@hai_dikdik
   </footer>
 
 </div>
-  
-<script>
-  const start = document.getElementById("startScreen");
-  const audio = document.getElementById("bgm");
 
-  start.addEventListener("click", () => {
-    audio.play();
-    start.style.display = "none";
-  });
+<script>
+const start = document.getElementById("startScreen");
+const envelope = document.querySelector(".envelope");
+const audio = document.getElementById("bgm");
+
+envelope.addEventListener("click", () => {
+  audio.play();
+  envelope.classList.add("open");
+
+  setTimeout(() => start.style.opacity = "0", 600);
+  setTimeout(() => start.style.display = "none", 1000);
+});
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
