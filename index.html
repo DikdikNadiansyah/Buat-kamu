@@ -338,5 +338,42 @@
       Made with lots of piggy love 🐷✨<br />@hai_dikdik
     </footer>
   </div>
+  <script>
+  const start = document.getElementById("startScreen");
+  const envelope = document.querySelector(".envelope");
+  const audio = document.getElementById("bgm");
+
+  envelope.addEventListener("click", () => {
+    audio.play();
+    envelope.classList.add("open");
+
+    setTimeout(() => {
+      start.style.opacity = "0";
+    }, 600);
+
+    setTimeout(() => {
+      start.style.display = "none";
+    }, 1000);
+  });
+
+  /* SNOW GENERATOR */
+  const snowContainer = document.querySelector(".snow-container");
+
+  for (let i = 0; i < 40; i++) {
+    const snow = document.createElement("div");
+    snow.className = "snow";
+
+    const size = Math.random() * 6 + 4;
+    snow.style.width = size + "px";
+    snow.style.height = size + "px";
+    snow.style.left = Math.random() * 100 + "vw";
+    snow.style.animationDuration = Math.random() * 5 + 5 + "s";
+    snow.style.animationDelay = Math.random() * 5 + "s";
+
+    snowContainer.appendChild(snow);
+  }
+</script>
+
 </body>
 </html>
+
