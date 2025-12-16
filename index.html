@@ -181,17 +181,14 @@
       overflow: hidden;
 }
 
-.message {
-  overflow: hidden;
-}
-
     .message {
-      min-height: 380px;
-      border: 2px dashed rgba(209, 74, 123, 0.16);
-      padding: 18px 20px;
-      border-radius: 12px;
-      line-height: 1.6;
-    }
+  height: 380px;          /* ⬅️ WAJIB height, bukan min-height */
+  overflow: hidden;
+  border: 2px dashed rgba(209, 74, 123, 0.16);
+  padding: 18px 20px;
+  border-radius: 12px;
+  line-height: 1.6;
+}
 
     .message h2 {
       font-family: "Sacramento", cursive;
@@ -212,26 +209,27 @@
       text-align: justify;
     }
     
-/* ===== MESSAGE SLIDER ===== */
+/* ===== MESSAGE SLIDER (FINAL) ===== */
 .message-slider {
   display: flex;
-  gap: 16px;
   width: 100%;
+  height: calc(100% - 60px); /* ruang untuk h2 */
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 8px;
 
-  /* BONUS */
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
 
 .message-slide {
   min-width: 100%;
-  flex-shrink: 0;      /* ⬅️ TAMBAHKAN INI */
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
   scroll-snap-align: start;
 }
 
+/* scrollbar */
 .message-slider::-webkit-scrollbar {
   height: 6px;
 }
@@ -444,28 +442,47 @@ body::after {
 
     <!-- KIRI : PESAN -->
     <div class="card message-box">
-      <div class="message">
-        <h2>Hai, Gianni 👋</h2>
+  <div class="message">
+    <h2>Hai, Gianni 👋</h2>
 
-        <div class="message-slider">
-          <div class="message-slide">
-            <p>Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini 🥳</p>
-          </div>
+    <div class="message-slider">
 
-          <div class="message-slide">
-            <p>Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku buat kamu...</p>
-          </div>
+      <!-- SLIDE 1 -->
+      <div class="message-slide">
+        <p>
+          Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga,
+          yaitu resign dari sini 🥳<br><br>
 
-          <div class="message-slide">
-            <p>Harapanku buat kamu kedepannya, semoga kamu selalu bahagia...</p>
-          </div>
-
-          <div class="message-slide">
-            <p>Udah dulu ya, udah kepanjangan 😁 intinya semoga bahagia selalu & See you on top 🚀✨</p>
-          </div>
-        </div>
+          Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku buat kamu,
+          karena aku juga gatau apakah kita bakal ketemu lagi atau nggak kedepannya.
+          Aku cuma mau bilang, makasih buat semuanya.
+          Aku juga mau minta maaf, kalau selama kenal sama aku,
+          banyak banget sisi buruknya, cukup ambil sisi positifnya ya (kalau ada 😅).
+        </p>
       </div>
+
+      <!-- SLIDE 2 -->
+      <div class="message-slide">
+        <p>
+          Harapanku buat kamu kedepannya, semoga kamu selalu bahagia,
+          bertemu dengan orang-orang yang baik (kaya aku 😎),
+          selalu support kamu untuk menjadi lebih baik.
+          Tetaplah jadi Gianni yang seperti sekarang, soalnya lucu 🤗<br><br>
+
+          Sehat-sehat ya, jaga diri baik-baik, selalu rajin olahraga,
+          jangan telat makan biar lambungnya tetap sehat,
+          pokoknya kamu harus selalu happy ya 🤞<br><br>
+
+          Udah dulu ya 😁 intinya semoga bahagia selalu &
+          <b>See you on top 🚀✨</b>
+        </p>
+      </div>
+
     </div>
+  </div>
+</div>
+
+
 
     <!-- KANAN : FOTO -->
     <div class="card polaroid tape-wrap photo-box">
@@ -519,4 +536,5 @@ body::after {
   </script>
 </body>
 </html>
+
 
