@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gianni Tardellie</title>
+
+  <!-- GOOGLE FONTS -->
 
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&family=Patrick+Hand&display=swap"
@@ -157,6 +160,7 @@
       }
     }
 
+    /* ================= LAYOUT ================= */
     .wrap {
       max-width: 900px;
       width: 100%;
@@ -192,6 +196,7 @@
       box-shadow: 0 8px 22px rgba(209, 74, 123, 0.12);
     }
 
+    /* ================= MESSAGE ================= */
     .message {
       min-height: 380px;
       border: 2px dashed rgba(209, 74, 123, 0.16);
@@ -205,7 +210,6 @@
       font-size: 34px;
       margin: 0 0 14px;
       color: #d14a7b;
-      text-align: left;
     }
 
     .message p {
@@ -218,6 +222,7 @@
       text-align: justify;
     }
 
+    /* ================= PHOTO ================= */
     .polaroid {
       background: linear-gradient(145deg, #ffe4ef, #ffd1e6);
       padding: 16px;
@@ -228,33 +233,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    .tape-wrap {
-      position: relative;
-    }
-
-    .tape {
-      position: absolute;
-      width: 70px;
-      height: 26px;
-      background: rgba(255, 255, 255, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(2px);
-      z-index: 3;
-    }
-
-    .tape-left {
-      top: -10px;
-      left: 18px;
-      transform: rotate(-12deg);
-    }
-
-    .tape-right {
-      top: -10px;
-      right: 18px;
-      transform: rotate(10deg);
     }
 
     #preview {
@@ -271,10 +249,12 @@
       opacity: 0.8;
     }
 
+    /* ================= RESPONSIVE ================= */
     @media (max-width: 880px) {
       .content {
         grid-template-columns: 1fr;
       }
+
       h1 {
         font-size: 40px;
       }
@@ -291,10 +271,14 @@
       }
     }
   </style>
+
 </head>
 
 <body>
+  <!-- SNOW -->
   <div class="snow-container"></div>
+
+  <!-- START SCREEN -->
 
   <div id="startScreen">
     <div class="envelope">
@@ -316,64 +300,62 @@
       <h1>Teruntuk kamu 🌹</h1>
     </header>
 
-    <div class="content">
-      <div class="card">
-        <div class="message">
-          <h2>Hai, Gianni 👋</h2>
-          <p>Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini 🥳</p>
-          <p>Oh iya, mungkin ini bakal jadi pesan terakhir dari aku buat kamu...</p>
-        </div>
-      </div>
-
-      <div class="card polaroid tape-wrap">
-        <img
-          id="preview"
-          src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg"
-          alt="Foto kita"
-        />
-      </div>
+```
+<div class="content">
+  <div class="card">
+    <div class="message">
+      <h2>Hai, Gianni 👋</h2>
+      <p>Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini 🥳</p>
+      <p>Oh iya, mungkin ini bakal jadi pesan terakhir dari aku buat kamu...</p>
     </div>
-
-    <footer>
-      Made with lots of piggy love 🐷✨<br />@hai_dikdik
-    </footer>
   </div>
+
+  <div class="card polaroid">
+    <img
+      id="preview"
+      src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg"
+      alt="Foto kita"
+    />
+  </div>
+</div>
+
+<footer>
+  Made with lots of piggy love 🐷✨<br />@hai_dikdik
+</footer>
+```
+
+  </div>
+
   <script>
-  const start = document.getElementById("startScreen");
-  const envelope = document.querySelector(".envelope");
-  const audio = document.getElementById("bgm");
+    const start = document.getElementById("startScreen");
+    const envelope = document.querySelector(".envelope");
+    const audio = document.getElementById("bgm");
 
-  envelope.addEventListener("click", () => {
-    audio.play();
-    envelope.classList.add("open");
+    envelope.addEventListener("click", () => {
+      audio.play();
+      envelope.classList.add("open");
 
-    setTimeout(() => {
-      start.style.opacity = "0";
-    }, 600);
+      setTimeout(() => (start.style.opacity = "0"), 600);
+      setTimeout(() => (start.style.display = "none"), 1000);
+    });
 
-    setTimeout(() => {
-      start.style.display = "none";
-    }, 1000);
-  });
+    /* SNOW GENERATOR */
+    const snowContainer = document.querySelector(".snow-container");
 
-  /* SNOW GENERATOR */
-  const snowContainer = document.querySelector(".snow-container");
+    for (let i = 0; i < 40; i++) {
+      const snow = document.createElement("div");
+      snow.className = "snow";
 
-  for (let i = 0; i < 40; i++) {
-    const snow = document.createElement("div");
-    snow.className = "snow";
+      const size = Math.random() * 6 + 4;
+      snow.style.width = size + "px";
+      snow.style.height = size + "px";
+      snow.style.left = Math.random() * 100 + "vw";
+      snow.style.animationDuration = Math.random() * 5 + 5 + "s";
+      snow.style.animationDelay = Math.random() * 5 + "s";
 
-    const size = Math.random() * 6 + 4;
-    snow.style.width = size + "px";
-    snow.style.height = size + "px";
-    snow.style.left = Math.random() * 100 + "vw";
-    snow.style.animationDuration = Math.random() * 5 + 5 + "s";
-    snow.style.animationDelay = Math.random() * 5 + "s";
-
-    snowContainer.appendChild(snow);
-  }
-</script>
+      snowContainer.appendChild(snow);
+    }
+  </script>
 
 </body>
 </html>
-
