@@ -170,10 +170,8 @@
     }
 
     .content {
-      display: grid;
-      grid-template-columns: 1fr 330px;
-      gap: 20px;
-    }
+  margin-top: 20px;
+}
 
     .card {
       background: #ffffffcb;
@@ -338,14 +336,10 @@
     }
 
     @media (max-width: 880px) {
-      .content {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 40px;
-      }
-    }
+  h1 {
+    font-size: 40px;
+  }
+}
 
     @media (max-width: 480px) {
       .message p {
@@ -380,6 +374,36 @@ body::before {
 body::after {
   bottom: 0;
   transform: rotate(180deg);
+}
+/* ===== 2 KOLOM PESAN & FOTO ===== */
+.main-container {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.message-box {
+  flex: 1;
+}
+
+.photo-box {
+  width: 330px;
+}
+
+/* RESPONSIVE HP */
+@media (max-width: 880px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .photo-box {
+    width: 100%;
+  }
+}
+    
+.message-box,
+.photo-box {
+  align-self: stretch;
 }
 
   </style>
@@ -416,51 +440,46 @@ body::after {
     </header>
 
     <div class="content">
-      <div class="card">
-        <div class="message">
-  <h2>Hai, Gianni 👋</h2>
+  <div class="main-container">
 
-  <div class="message-slider">
-    <div class="message-slide">
-      <p>Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini 🥳</p>
-    </div>
+    <!-- KIRI : PESAN -->
+    <div class="card message-box">
+      <div class="message">
+        <h2>Hai, Gianni 👋</h2>
 
-    <div class="message-slide">
-      <p>Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku buat kamu, karena aku juga gatau apakah kita bakal ketemu lagi atau nggak kedepannya. Aku cuma mau bilang, makasih buat semuanya. Aku juga mau minta maaf, kalau selama kenal sama aku, banyak banget sisi buruknya, cukup ambil sisi positifnya ya (kalau ada 😅).</p>
-    </div>
+        <div class="message-slider">
+          <div class="message-slide">
+            <p>Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini 🥳</p>
+          </div>
 
-    <div class="message-slide">
-      <p>Harapanku buat kamu kedepannya, semoga kamu selalu bahagia, bertemu dengan orang-orang yang baik (kaya aku 😎), selalu support kamu untuk menjadi lebih baik. tetaplah jadi Gianni yang seperti sekarang, soalnya lucu 🤗</p>
-    </div>
+          <div class="message-slide">
+            <p>Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku buat kamu...</p>
+          </div>
 
-    <div class="message-slide">
-      <p>Jika nantinya kamu butuh tempat untuk bercerita, tempat untuk sharing/discuss, tempat buat ngomel-ngomel/berkeluh kesah, kamu bisa chat aku ya.</p>
-    </div>
+          <div class="message-slide">
+            <p>Harapanku buat kamu kedepannya, semoga kamu selalu bahagia...</p>
+          </div>
 
-    <div class="message-slide">
-      <p>Sehat-sehat ya, jaga diri baik-baik, selalu rajin olahraga, jangan telat makan biar lambungnya tetap sehat, pokoknya kamu harus selalu happy ya 🤞</p>
-    </div>
-
-    <div class="message-slide">
-      <p>Kalau kamu ngeuh, aku pakai backsound lagu kesukaan kamu. Ini juga first time aku buat ginian, biar so sweet hehe...</p>
-    </div>
-
-    <div class="message-slide">
-      <p>Udah dulu ya, udah kepanjangan 😁 intinya semoga bahagia selalu &amp; See you on top 🚀✨</p>
-    </div>
-  </div>
-</div>
-
-      <div class="card polaroid tape-wrap">
-        <span class="tape tape-left"></span>
-        <span class="tape tape-right"></span>
-        <img
-          id="preview"
-          src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg"
-          alt="Foto kita"
-        />
+          <div class="message-slide">
+            <p>Udah dulu ya, udah kepanjangan 😁 intinya semoga bahagia selalu & See you on top 🚀✨</p>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- KANAN : FOTO -->
+    <div class="card polaroid tape-wrap photo-box">
+      <span class="tape tape-left"></span>
+      <span class="tape tape-right"></span>
+      <img
+        id="preview"
+        src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg"
+        alt="Foto kita"
+      />
+    </div>
+
+  </div>
+</div>
 
     <footer>
       Made with lots of piggy love 🐷✨<br />
@@ -500,3 +519,4 @@ body::after {
   </script>
 </body>
 </html>
+
