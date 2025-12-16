@@ -209,13 +209,17 @@
       text-align: justify;
     }
     
-    /* ===== MESSAGE SLIDER ===== */
+/* ===== MESSAGE SLIDER ===== */
 .message-slider {
   display: flex;
   gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding-bottom: 8px;
+
+  /* BONUS */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 .message-slide {
@@ -489,6 +493,7 @@ body::after {
   </script>
 </body>
 </html>
+
 
 
 
