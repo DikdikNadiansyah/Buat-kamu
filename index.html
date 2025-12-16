@@ -325,6 +325,29 @@
         font-size: 30px;
       }
     }
+    /* ===== BACKGROUND CURVE DECOR ===== */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 120%;
+  height: 260px;
+  left: -10%;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 0 0 100% 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::before {
+  top: 0;
+}
+
+body::after {
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
   </style>
 </head>
 
@@ -428,3 +451,4 @@
   </script>
 </body>
 </html>
+
