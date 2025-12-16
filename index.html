@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="id">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gianni Tardellie</title>
-
-  <!-- GOOGLE FONTS -->
 
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&family=Patrick+Hand&display=swap"
@@ -92,23 +89,13 @@
     }
 
     @keyframes pulse {
-      0%,
-      100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     @keyframes floatEnvelope {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-12px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
 
     /* ================= MAIN THEME ================= */
@@ -160,7 +147,6 @@
       }
     }
 
-    /* ================= LAYOUT ================= */
     .wrap {
       max-width: 900px;
       width: 100%;
@@ -196,7 +182,6 @@
       box-shadow: 0 8px 22px rgba(209, 74, 123, 0.12);
     }
 
-    /* ================= MESSAGE ================= */
     .message {
       min-height: 380px;
       border: 2px dashed rgba(209, 74, 123, 0.16);
@@ -208,8 +193,10 @@
     .message h2 {
       font-family: "Sacramento", cursive;
       font-size: 34px;
-      margin: 0 0 14px;
+      margin-top: 0;
+      margin-bottom: 14px;
       color: #d14a7b;
+      text-align: left;
     }
 
     .message p {
@@ -222,17 +209,57 @@
       text-align: justify;
     }
 
-    /* ================= PHOTO ================= */
     .polaroid {
       background: linear-gradient(145deg, #ffe4ef, #ffd1e6);
       padding: 16px;
       border-radius: 16px;
-      box-shadow: 0 18px 40px rgba(209, 74, 123, 0.25),
+      box-shadow:
+        0 18px 40px rgba(209, 74, 123, 0.25),
         inset 0 0 0 2px rgba(255, 255, 255, 0.8);
       transform: rotate(1deg);
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    .tape-wrap {
+      position: relative;
+    }
+
+    .tape {
+      position: absolute;
+      width: 70px;
+      height: 26px;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(2px);
+      z-index: 3;
+    }
+
+    .tape-left {
+      top: -10px;
+      left: 18px;
+      transform: rotate(-12deg);
+    }
+
+    .tape-right {
+      top: -10px;
+      right: 18px;
+      transform: rotate(10deg);
+    }
+
+    .tape::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.25),
+        rgba(255, 255, 255, 0.25) 4px,
+        transparent 4px,
+        transparent 8px
+      );
     }
 
     #preview {
@@ -249,7 +276,33 @@
       opacity: 0.8;
     }
 
-    /* ================= RESPONSIVE ================= */
+    /* ================= DECORATIONS ================= */
+    .decor {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.9;
+      animation: float 6s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .wrap > *:not(.decor) {
+      position: relative;
+      z-index: 2;
+    }
+
+    .decor.small { width: 60px; }
+    .decor.medium { width: 90px; }
+
+    .decor.top-left { top: 6px; left: 6px; }
+    .decor.top-right { top: 6px; right: 6px; }
+    .decor.bottom-left { bottom: 6px; left: 6px; }
+    .decor.bottom-right { bottom: 6px; right: 6px; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-16px); }
+    }
+
     @media (max-width: 880px) {
       .content {
         grid-template-columns: 1fr;
@@ -264,6 +317,8 @@
       .message p {
         font-size: 15px;
         line-height: 1.8;
+        text-align: justify;
+        hyphens: auto;
       }
 
       .message h2 {
@@ -271,7 +326,6 @@
       }
     }
   </style>
-
 </head>
 
 <body>
@@ -279,7 +333,6 @@
   <div class="snow-container"></div>
 
   <!-- START SCREEN -->
-
   <div id="startScreen">
     <div class="envelope">
       <div class="letter">
@@ -296,34 +349,51 @@
   </audio>
 
   <div class="wrap">
+    <img src="babi_bunga.png" class="decor small top-left" />
+    <img src="babi_ketawa.gif" class="decor medium top-right" />
+    <img src="chef_babi.png" class="decor medium bottom-left" />
+    <img src="cisss.gif" class="decor small bottom-right" />
+
     <header>
       <h1>Teruntuk kamu 🌹</h1>
     </header>
 
-```
-<div class="content">
-  <div class="card">
-    <div class="message">
-      <h2>Hai, Gianni 👋</h2>
-      <p>Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini 🥳</p>
-      <p>Oh iya, mungkin ini bakal jadi pesan terakhir dari aku buat kamu...</p>
+    <div class="content">
+      <div class="card">
+        <div class="message">
+          <h2>Hai, Gianni 👋</h2>
+
+          <p>Gak kerasa ya, sekarang udah jadi alumni J&amp;T 😁 momen yang ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini 🥳</p>
+
+          <p>Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku buat kamu, karena aku juga gatau apakah kita bakal ketemu lagi atau nggak kedepannya. Aku cuma mau bilang, makasih buat semuanya. Aku juga mau minta maaf, kalau selama kenal sama aku, banyak banget sisi buruknya, cukup ambil sisi positifnya ya (kalau ada 😅).</p>
+
+          <p>Harapanku buat kamu kedepannya, semoga kamu selalu bahagia, bertemu dengan orang-orang yang baik (kaya aku 😎), selalu support kamu untuk menjadi lebih baik. tetaplah jadi Gianni yang seperti sekarang, soalnya lucu 🤗</p>
+
+          <p>Jika nantinya kamu butuh tempat untuk bercerita, tempat untuk sharing/discuss, tempat buat ngomel-ngomel/berkeluh kesah, kamu bisa chat aku ya.</p>
+
+          <p>Sehat-sehat ya, jaga diri baik-baik, selalu rajin olahraga, jangan telat makan biar lambungnya tetap sehat, pokoknya kamu harus selalu happy ya 🤞</p>
+
+          <p>Kalau kamu ngeuh, aku pakai backsound lagu kesukaan kamu. Ini juga first time aku buat ginian, biar so sweet hehe...</p>
+
+          <p>Udah dulu ya, udah kepanjangan 😁 intinya semoga bahagia selalu &amp; See you on top 🚀✨</p>
+        </div>
+      </div>
+
+      <div class="card polaroid tape-wrap">
+        <span class="tape tape-left"></span>
+        <span class="tape tape-right"></span>
+        <img
+          id="preview"
+          src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg"
+          alt="Foto kita"
+        />
+      </div>
     </div>
-  </div>
 
-  <div class="card polaroid">
-    <img
-      id="preview"
-      src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg"
-      alt="Foto kita"
-    />
-  </div>
-</div>
-
-<footer>
-  Made with lots of piggy love 🐷✨<br />@hai_dikdik
-</footer>
-```
-
+    <footer>
+      Made with lots of piggy love 🐷✨<br />
+      @hai_dikdik
+    </footer>
   </div>
 
   <script>
@@ -356,6 +426,5 @@
       snowContainer.appendChild(snow);
     }
   </script>
-
 </body>
 </html>
