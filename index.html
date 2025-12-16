@@ -7,7 +7,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&family=Patrick+Hand&display=swap" rel="stylesheet">
 
-
 <style>
 /* ================= START SCREEN ================= */
 #startScreen{
@@ -292,8 +291,51 @@ footer{
   .message h2{
     font-size: 30px;
   }
+
+/* ================= FIX PESAN AGAR TIDAK MEMANJANG ================= */
+.message {
+    max-width: 500px; /* batasi lebar agar teks tidak terlalu panjang */
+    margin: 0 auto;   /* center teks di card */
+    line-height: 1.8; /* jarak antar baris lebih nyaman */
+    word-wrap: break-word; /* pastikan teks pindah baris */
 }
 
+.message h2 {
+    font-size: 28px;  /* lebih proporsional */
+    text-align: center; /* center heading biar rapi */
+}
+
+.message p {
+    font-size: 16px; /* lebih pas dengan foto */
+    line-height: 1.8;
+    text-align: justify; /* rata kiri-kanan */
+}
+
+/* ================= RESPONSIVE UNTUK LAYAR KECIL ================= */
+@media (max-width: 880px) {
+  .message {
+    max-width: 100%; /* fleksibel di tablet */
+  }
+  .message h2 {
+    font-size: 26px;
+  }
+  .message p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .message {
+    max-width: 90%; /* pas di HP */
+  }
+  .message h2 {
+    font-size: 24px;
+  }
+  .message p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
 </style>
 </head>
 
@@ -391,9 +433,3 @@ for(let i=0;i<40;i++){
 
 </body>
 </html>
-
-
-
-
-
-
