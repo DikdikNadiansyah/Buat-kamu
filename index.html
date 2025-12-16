@@ -208,6 +208,29 @@
       color: #6a1f3d;
       text-align: justify;
     }
+    
+    /* ===== MESSAGE SLIDER ===== */
+.message-slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+}
+
+.message-slide {
+  min-width: 100%;
+  scroll-snap-align: start;
+}
+
+.message-slider::-webkit-scrollbar {
+  height: 6px;
+}
+
+.message-slider::-webkit-scrollbar-thumb {
+  background: rgba(209, 74, 123, 0.3);
+  border-radius: 10px;
+}
 
     .polaroid {
       background: linear-gradient(145deg, #ffe4ef, #ffd1e6);
@@ -384,23 +407,38 @@ body::after {
     <div class="content">
       <div class="card">
         <div class="message">
-          <h2>Hai, Gianni 👋</h2>
+  <h2>Hai, Gianni 👋</h2>
 
-          <p>Gak kerasa ya, sekarang udah jadi alumni J&amp;T 😁 momen yang ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini 🥳</p>
+  <div class="message-slider">
+    <div class="message-slide">
+      <p>Gak kerasa ya, sekarang udah jadi alumni J&amp;T 😁 momen yang ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini 🥳</p>
+    </div>
 
-          <p>Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku buat kamu, karena aku juga gatau apakah kita bakal ketemu lagi atau nggak kedepannya. Aku cuma mau bilang, makasih buat semuanya. Aku juga mau minta maaf, kalau selama kenal sama aku, banyak banget sisi buruknya, cukup ambil sisi positifnya ya (kalau ada 😅).</p>
+    <div class="message-slide">
+      <p>Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku buat kamu, karena aku juga gatau apakah kita bakal ketemu lagi atau nggak kedepannya. Aku cuma mau bilang, makasih buat semuanya. Aku juga mau minta maaf, kalau selama kenal sama aku, banyak banget sisi buruknya, cukup ambil sisi positifnya ya (kalau ada 😅).</p>
+    </div>
 
-          <p>Harapanku buat kamu kedepannya, semoga kamu selalu bahagia, bertemu dengan orang-orang yang baik (kaya aku 😎), selalu support kamu untuk menjadi lebih baik. tetaplah jadi Gianni yang seperti sekarang, soalnya lucu 🤗</p>
+    <div class="message-slide">
+      <p>Harapanku buat kamu kedepannya, semoga kamu selalu bahagia, bertemu dengan orang-orang yang baik (kaya aku 😎), selalu support kamu untuk menjadi lebih baik. tetaplah jadi Gianni yang seperti sekarang, soalnya lucu 🤗</p>
+    </div>
 
-          <p>Jika nantinya kamu butuh tempat untuk bercerita, tempat untuk sharing/discuss, tempat buat ngomel-ngomel/berkeluh kesah, kamu bisa chat aku ya.</p>
+    <div class="message-slide">
+      <p>Jika nantinya kamu butuh tempat untuk bercerita, tempat untuk sharing/discuss, tempat buat ngomel-ngomel/berkeluh kesah, kamu bisa chat aku ya.</p>
+    </div>
 
-          <p>Sehat-sehat ya, jaga diri baik-baik, selalu rajin olahraga, jangan telat makan biar lambungnya tetap sehat, pokoknya kamu harus selalu happy ya 🤞</p>
+    <div class="message-slide">
+      <p>Sehat-sehat ya, jaga diri baik-baik, selalu rajin olahraga, jangan telat makan biar lambungnya tetap sehat, pokoknya kamu harus selalu happy ya 🤞</p>
+    </div>
 
-          <p>Kalau kamu ngeuh, aku pakai backsound lagu kesukaan kamu. Ini juga first time aku buat ginian, biar so sweet hehe...</p>
+    <div class="message-slide">
+      <p>Kalau kamu ngeuh, aku pakai backsound lagu kesukaan kamu. Ini juga first time aku buat ginian, biar so sweet hehe...</p>
+    </div>
 
-          <p>Udah dulu ya, udah kepanjangan 😁 intinya semoga bahagia selalu &amp; See you on top 🚀✨</p>
-        </div>
-      </div>
+    <div class="message-slide">
+      <p>Udah dulu ya, udah kepanjangan 😁 intinya semoga bahagia selalu &amp; See you on top 🚀✨</p>
+    </div>
+  </div>
+</div>
 
       <div class="card polaroid tape-wrap">
         <span class="tape tape-left"></span>
@@ -451,5 +489,6 @@ body::after {
   </script>
 </body>
 </html>
+
 
 
