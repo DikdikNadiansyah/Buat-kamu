@@ -180,7 +180,12 @@
       padding: 16px;
       border-radius: 14px;
       box-shadow: 0 8px 22px rgba(209, 74, 123, 0.12);
-    }
+      overflow: hidden;
+}
+
+.message {
+  overflow: hidden;
+}
 
     .message {
       min-height: 380px;
@@ -213,6 +218,7 @@
 .message-slider {
   display: flex;
   gap: 16px;
+  width: 100%;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding-bottom: 8px;
@@ -224,6 +230,7 @@
 
 .message-slide {
   min-width: 100%;
+  flex-shrink: 0;      /* ⬅️ TAMBAHKAN INI */
   scroll-snap-align: start;
 }
 
@@ -415,7 +422,7 @@ body::after {
 
   <div class="message-slider">
     <div class="message-slide">
-      <p>Gak kerasa ya, sekarang udah jadi alumni J&amp;T 😁 momen yang ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini 🥳</p>
+      <p>Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini 🥳</p>
     </div>
 
     <div class="message-slide">
@@ -493,7 +500,3 @@ body::after {
   </script>
 </body>
 </html>
-
-
-
-
