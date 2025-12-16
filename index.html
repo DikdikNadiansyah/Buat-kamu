@@ -403,6 +403,46 @@ body::after {
 .photo-box {
   align-self: stretch;
 }
+    /* ===== SLIDE CONTROLS (IG STYLE) ===== */
+.slide-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.slide-controls button {
+  background: #ffd1e6;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  color: #d14a7b;
+  box-shadow: 0 4px 10px rgba(209, 74, 123, 0.25);
+}
+
+.slide-controls button:active {
+  transform: scale(0.9);
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(209, 74, 123, 0.3);
+  border-radius: 50%;
+}
+
+.dot.active {
+  background: #d14a7b;
+}
 
   </style>
 </head>
@@ -422,6 +462,36 @@ body::after {
       </div>
     </div>
   </div>
+<script>
+  const slider = document.querySelector(".message-slider");
+  const slides = document.querySelectorAll(".message-slide");
+  const dots = document.querySelectorAll(".dot");
+  let index = 0;
+
+  function updateSlide() {
+    slider.scrollTo({
+      left: slider.clientWidth * index,
+      behavior: "smooth"
+    });
+
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[index].classList.add("active");
+  }
+
+  document.getElementById("nextBtn").onclick = () => {
+    if (index < slides.length - 1) {
+      index++;
+      updateSlide();
+    }
+  };
+
+  document.getElementById("prevBtn").onclick = () => {
+    if (index > 0) {
+      index--;
+      updateSlide();
+    }
+  };
+</script>
 
   <audio id="bgm" loop>
     <source src="alamak.mp3" type="audio/mpeg" />
@@ -446,7 +516,6 @@ body::after {
     <h2>Hai, Gianni 👋</h2>
 
     <div class="message-slider">
-
       <!-- SLIDE 1 -->
       <div class="message-slide">
         <p>
@@ -477,10 +546,18 @@ body::after {
           <b>See you on top 🚀✨</b>
         </p>
       </div>
-
-    </div>
+  </div>
+      <div class="slide-controls">
+  <button id="prevBtn">‹</button>
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+  </div>
+  <button id="nextBtn">›</button>
+</div>
   </div>
 </div>
+
 
 
 
@@ -536,5 +613,6 @@ body::after {
   </script>
 </body>
 </html>
+
 
 
