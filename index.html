@@ -147,19 +147,18 @@
 
     /* ================= MESSAGE SLIDER ================= */
 .message-slider {
-  position: relative;     /* ⬅️ WAJIB */
+  width: 100%;
+  overflow: hidden;
+}
+
+.message-track {
   display: flex;
-  width: 200%;
-  overflow: hidden;       /* ⬅️ WAJIB */
-  align-items: flex-start;
-  transition: transform 0.5s ease, height 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 .message-slide {
-  width: 50%;
+  min-width: 100%;
   box-sizing: border-box;
-  padding-right: 6px;
-  flex-shrink: 0;
 }
 
     .message-slider::-webkit-scrollbar { height:6px; }
@@ -246,7 +245,8 @@
           <div class="message">
             <h2>Hai, Gianni 👋</h2>
             <div class="message-slider">
-              <div class="message-slide">
+               <div class="message-track">
+                 <div class="message-slide">
                 <p>
                   Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga,
                   yaitu resign dari sini 🥳<br><br>
@@ -329,16 +329,18 @@
 
     /* SLIDER */
   const slider = document.querySelector(".message-slider");
+  const track = document.querySelector(".message-track");
   const slides = document.querySelectorAll(".message-slide");
   const dots = document.querySelectorAll(".dot");
   let index = 0;
 
-  function updateHeight() {
-    slider.style.height = slides[index].offsetHeight + "px";
-  }
+ function updateHeight() {
+  document.querySelector(".message").style.height =
+    slides[index].offsetHeight + 120 + "px";
+}
 
   function updateSlide() {
-    slider.style.transform = `translateX(-${index * 50}%)`;
+    track.style.transform = `translateX(-${index * 100}%)`;
     dots.forEach(dot => dot.classList.remove("active"));
     dots[index].classList.add("active");
     updateHeight();
@@ -365,7 +367,3 @@
   </script>
 </body>
 </html>
-
-
-
-
