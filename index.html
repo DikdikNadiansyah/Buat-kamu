@@ -182,6 +182,7 @@
 }
 
     .message {
+  position: relative; /* TAMBAHKAN INI */
   height: 380px;          /* ⬅️ WAJIB height, bukan min-height */
   overflow: hidden;
   border: 2px dashed rgba(209, 74, 123, 0.16);
@@ -405,11 +406,12 @@ body::after {
 }
     /* ===== SLIDE CONTROLS (IG STYLE) ===== */
 .slide-controls {
+  position: absolute; /* posisi di dalam box pesan */
+  bottom: 12px;       /* pojok bawah */
+  right: 12px;        /* pojok kanan */
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 14px;
-  margin-top: 10px;
+  gap: 6px;
 }
 
 .slide-controls button {
@@ -478,19 +480,20 @@ body::after {
     dots[index].classList.add("active");
   }
 
-  document.getElementById("nextBtn").onclick = () => {
-    if (index < slides.length - 1) {
-      index++;
-      updateSlide();
-    }
-  };
+  document.getElementById("nextSlideBtn").onclick = () => {
+  if (index < slides.length - 1) {
+    index++;
+    updateSlide();
+  }
+};
 
-  document.getElementById("prevBtn").onclick = () => {
-    if (index > 0) {
-      index--;
-      updateSlide();
-    }
-  };
+document.getElementById("prevSlideBtn").onclick = () => {
+  if (index > 0) {
+    index--;
+    updateSlide();
+  }
+};
+
 </script>
 
   <audio id="bgm" loop>
@@ -548,15 +551,15 @@ body::after {
       </div>
     </div> <!-- tutup message-slider -->
 
-    <div class="slide-controls">
-      <button id="prevBtn">‹</button>
-      <div class="dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-      </div>
-      <button id="nextBtn">›</button>
-    </div>
-
+   <!-- Tambahkan tombol di sini -->
+<div class="slide-controls">
+  <button id="prevSlideBtn">‹ Prev</button>
+  <button id="nextSlideBtn">Next ›</button>
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+  </div>
+  
   </div> <!-- tutup message -->
 </div> <!-- tutup card message-box -->
 
@@ -613,7 +616,3 @@ body::after {
   </script>
 </body>
 </html>
-
-
-
-
