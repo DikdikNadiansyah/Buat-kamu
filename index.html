@@ -141,7 +141,7 @@
     .card { background: #ffffffcb; padding: 16px; border-radius: 14px; box-shadow: 0 8px 22px rgba(209, 74, 123, 0.12); overflow: hidden; }
 
     /* ================= MESSAGE BOX ================= */
-    .message { position: relative; overflow: hidden; border: 2px dashed rgba(209, 74, 123, 0.16); padding: 18px 20px 60px; border-radius: 12px; }
+    .message { position: relative; overflow: hidden; border: 2px dashed rgba(209, 74, 123, 0.16); padding: 18px 20px 48px; border-radius: 12px; }
     .message h2 { font-family: "Sacramento", cursive; font-size: 34px; margin:0 0 14px 0; color:#d14a7b; text-align:left; }
     .message p { font-family:"Patrick Hand", cursive; font-size:17px; line-height:1.9; letter-spacing:0.4px; color:#6a1f3d; text-align:justify; white-space:normal; word-break:break-word; width:100%; box-sizing:border-box; margin-bottom:16px; }
 
@@ -199,7 +199,7 @@
 /* ===== SLIDE CONTROLS (CENTER RAPI) ===== */
 .slide-controls {
   position: absolute;
-  bottom: 14px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
 
@@ -433,7 +433,7 @@ body::after {
 
  function updateHeight() {
   document.querySelector(".message").style.height =
-    slides[index].offsetHeight + 140 + "px";
+    slides[index].offsetHeight + 100 + "px";
 }
 
   function updateSlide() {
@@ -463,3 +463,4 @@ body::after {
 
 </body>
 </html>
+
