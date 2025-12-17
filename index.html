@@ -240,48 +240,55 @@
     <div class="content">
       <div class="main-container">
 
-        <!-- KIRI : PESAN -->
-        <div class="card message-box">
-          <div class="message">
-            <h2>Hai, Gianni 👋</h2>
-            <div class="message-slider">
-               <div class="message-track">
-                 <div class="message-slide">
-                <p>
-                  Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga,
-                  yaitu resign dari sini 🥳<br><br>
-                  Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku buat kamu,
-                  karena aku juga gatau apakah kita bakal ketemu lagi atau nggak kedepannya.
-                  Aku cuma mau bilang, makasih buat semuanya.
-                  Aku juga mau minta maaf, kalau selama kenal sama aku,
-                  banyak banget sisi buruknya, cukup ambil sisi positifnya ya (kalau ada 😅).
-                </p>
-              </div>
-              <div class="message-slide">
-                <p>
-                  Harapanku buat kamu kedepannya, semoga kamu selalu bahagia,
-                  bertemu dengan orang-orang yang baik (kaya aku 😎),
-                  selalu support kamu untuk menjadi lebih baik.
-                  Tetaplah jadi Gianni yang seperti sekarang, soalnya lucu 🤗<br><br>
-                  Sehat-sehat ya, jaga diri baik-baik, selalu rajin olahraga,
-                  jangan telat makan biar lambungnya tetap sehat,
-                  pokoknya kamu harus selalu happy ya 🤞<br><br>
-                  Udah dulu ya 😁 intinya semoga bahagia selalu &
-                  <b>See you on top 🚀✨</b>
-                </p>
-              </div>
-            </div>
+      <!-- KIRI : PESAN -->
+<div class="card message-box">
+  <div class="message">
+    <h2>Hai, Gianni 👋</h2>
 
-            <div class="slide-controls">
-              <button id="prevSlideBtn">‹ Prev</button>
-              <button id="nextSlideBtn">Next ›</button>
-              <div class="dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-              </div>
-            </div>
-          </div>
+    <div class="message-slider">
+      <div class="message-track">
+
+        <div class="message-slide">
+          <p>
+            Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga,
+            yaitu resign dari sini 🥳<br><br>
+            Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku buat kamu,
+            karena aku juga gatau apakah kita bakal ketemu lagi atau nggak kedepannya.
+            Aku cuma mau bilang, makasih buat semuanya.
+            Aku juga mau minta maaf, kalau selama kenal sama aku,
+            banyak banget sisi buruknya, cukup ambil sisi positifnya ya (kalau ada 😅).
+          </p>
         </div>
+
+        <div class="message-slide">
+          <p>
+            Harapanku buat kamu kedepannya, semoga kamu selalu bahagia,
+            bertemu dengan orang-orang yang baik (kaya aku 😎),
+            selalu support kamu untuk menjadi lebih baik.
+            Tetaplah jadi Gianni yang seperti sekarang, soalnya lucu 🤗<br><br>
+            Sehat-sehat ya, jaga diri baik-baik, selalu rajin olahraga,
+            jangan telat makan biar lambungnya tetap sehat,
+            pokoknya kamu harus selalu happy ya 🤞<br><br>
+            Udah dulu ya 😁 intinya semoga bahagia selalu &
+            <b>See you on top 🚀✨</b>
+          </p>
+        </div>
+
+      </div> <!-- ⬅️ TUTUP message-track -->
+    </div>   <!-- ⬅️ TUTUP message-slider -->
+
+    <div class="slide-controls">
+      <button id="prevSlideBtn">‹ Prev</button>
+      <button id="nextSlideBtn">Next ›</button>
+
+      <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+  </div> <!-- ⬅️ TUTUP .message -->
+</div>   <!-- ⬅️ TUTUP .card.message-box -->
 
         <!-- KANAN : FOTO -->
         <div class="card polaroid tape-wrap photo-box">
@@ -336,7 +343,7 @@
 
  function updateHeight() {
   document.querySelector(".message").style.height =
-    slides[index].offsetHeight + 120 + "px";
+    slides[index].offsetHeight + 140 + "px";
 }
 
   function updateSlide() {
@@ -364,6 +371,6 @@
   window.addEventListener("load", updateHeight);
 </script>
 
-  </script>
 </body>
 </html>
+
