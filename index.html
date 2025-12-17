@@ -34,9 +34,7 @@
       animation: floatEnvelope 2.4s ease-in-out infinite;
     }
 
-    .envelope:active {
-      transform: scale(0.95);
-    }
+    .envelope:active { transform: scale(0.95); }
 
     .envelope::before {
       content: "";
@@ -47,17 +45,11 @@
       border-radius: 14px 14px 0 0;
     }
 
-    .envelope.open::before {
-      animation: openFlap 0.6s forwards;
-    }
+    .envelope.open::before { animation: openFlap 0.6s forwards; }
 
     @keyframes openFlap {
-      from {
-        clip-path: polygon(0 0, 50% 55%, 100% 0);
-      }
-      to {
-        clip-path: polygon(0 0, 50% 0%, 100% 0);
-      }
+      from { clip-path: polygon(0 0, 50% 55%, 100% 0); }
+      to { clip-path: polygon(0 0, 50% 0%, 100% 0); }
     }
 
     /* ================= LETTER ================= */
@@ -88,15 +80,8 @@
       opacity: 0.7;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    @keyframes floatEnvelope {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
+    @keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
+    @keyframes floatEnvelope { 0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);} }
 
     /* ================= MAIN THEME ================= */
     :root {
@@ -110,12 +95,7 @@
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(
-        180deg,
-        var(--pink1),
-        var(--pink2) 40%,
-        var(--pink3)
-      );
+      background: linear-gradient(180deg, var(--pink1), var(--pink2) 40%, var(--pink3));
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -141,11 +121,7 @@
       animation: fall linear infinite;
     }
 
-    @keyframes fall {
-      to {
-        transform: translateY(110vh);
-      }
-    }
+    @keyframes fall { to { transform: translateY(110vh); } }
 
     .wrap {
       max-width: 900px;
@@ -158,294 +134,68 @@
       z-index: 2;
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
+    header { text-align: center; margin-bottom: 24px; }
+    h1 { font-family: "Sacramento", cursive; font-size: 52px; color: var(--accent); }
+    .content { margin-top: 20px; }
 
-    h1 {
-      font-family: "Sacramento", cursive;
-      font-size: 52px;
-      color: var(--accent);
-    }
+    .card { background: #ffffffcb; padding: 16px; border-radius: 14px; box-shadow: 0 8px 22px rgba(209, 74, 123, 0.12); overflow: hidden; }
 
-    .content {
-  margin-top: 20px;
-}
+    /* ================= MESSAGE BOX ================= */
+    .message { position: relative; height: 380px; overflow: hidden; border: 2px dashed rgba(209, 74, 123, 0.16); padding: 18px 20px; border-radius: 12px; line-height: 1.6; }
+    .message h2 { font-family: "Sacramento", cursive; font-size: 34px; margin:0 0 14px 0; color:#d14a7b; text-align:left; }
+    .message p { font-family:"Patrick Hand", cursive; font-size:17px; line-height:1.9; letter-spacing:0.4px; color:#6a1f3d; text-align:justify; white-space:normal; word-break:break-word; width:100%; box-sizing:border-box; margin-bottom:16px; }
 
-    .card {
-      background: #ffffffcb;
-      padding: 16px;
-      border-radius: 14px;
-      box-shadow: 0 8px 22px rgba(209, 74, 123, 0.12);
-      overflow: hidden;
-}
+    /* ================= MESSAGE SLIDER ================= */
+    .message-slider { display:flex; width:100%; height:calc(100% - 60px); overflow-x:hidden; scroll-snap-type:x mandatory; scroll-behavior:smooth; }
+    .message-slide { min-width:100%; flex-shrink:0; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; scroll-snap-align:start; word-break:break-word; box-sizing:border-box; width:100%; }
 
-    .message {
-  position: relative; /* TAMBAHKAN INI */
-  height: 380px;          /* ⬅️ WAJIB height, bukan min-height */
-  overflow: hidden;
-  border: 2px dashed rgba(209, 74, 123, 0.16);
-  padding: 18px 20px;
-  border-radius: 12px;
-  line-height: 1.6;
-}
+    .message-slider::-webkit-scrollbar { height:6px; }
+    .message-slider::-webkit-scrollbar-thumb { background: rgba(209, 74, 123, 0.3); border-radius: 10px; }
 
-    .message h2 {
-      font-family: "Sacramento", cursive;
-      font-size: 34px;
-      margin-top: 0;
-      margin-bottom: 14px;
-      color: #d14a7b;
-      text-align: left;
-    }
+    /* ================= POLAROID ================= */
+    .polaroid { background: linear-gradient(145deg, #ffe4ef, #ffd1e6); padding:16px; border-radius:16px; box-shadow:0 18px 40px rgba(209,74,123,0.25), inset 0 0 0 2px rgba(255,255,255,0.8); transform:rotate(1deg); display:flex; justify-content:center; align-items:center; }
+    .tape-wrap { position: relative; }
+    .tape { position:absolute; width:70px; height:26px; background:rgba(255,255,255,0.65); border:1px solid rgba(255,255,255,0.9); box-shadow:0 6px 14px rgba(0,0,0,0.15); backdrop-filter:blur(2px); z-index:3; }
+    .tape-left { top:-10px; left:18px; transform:rotate(-12deg); }
+    .tape-right { top:-10px; right:18px; transform:rotate(10deg); }
+    .tape::after { content:""; position:absolute; inset:0; background:repeating-linear-gradient(45deg, rgba(255,255,255,0.25), rgba(255,255,255,0.25) 4px, transparent 4px, transparent 8px); }
+    #preview { width:100%; max-height:420px; object-fit:contain; border-radius:8px; }
 
-    .message p {
-      font-family: "Patrick Hand", cursive;
-      font-size: 17px;
-      line-height: 1.9;
-      letter-spacing: 0.4px;
-      margin-bottom: 16px;
-      color: #6a1f3d;
-      text-align: justify;
-    }
-    
-/* ===== MESSAGE SLIDER (FINAL) ===== */
-.message-slider {
-  display: flex;
-  width: 100%;
-  height: calc(100% - 60px); /* ruang untuk h2 */
-  overflow-x: auto;
-
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-
-.message-slide {
-  min-width: 100%;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  scroll-snap-align: start;
-}
-
-/* scrollbar */
-.message-slider::-webkit-scrollbar {
-  height: 6px;
-}
-
-.message-slider::-webkit-scrollbar-thumb {
-  background: rgba(209, 74, 123, 0.3);
-  border-radius: 10px;
-}
-
-    .polaroid {
-      background: linear-gradient(145deg, #ffe4ef, #ffd1e6);
-      padding: 16px;
-      border-radius: 16px;
-      box-shadow:
-        0 18px 40px rgba(209, 74, 123, 0.25),
-        inset 0 0 0 2px rgba(255, 255, 255, 0.8);
-      transform: rotate(1deg);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .tape-wrap {
-      position: relative;
-    }
-
-    .tape {
-      position: absolute;
-      width: 70px;
-      height: 26px;
-      background: rgba(255, 255, 255, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(2px);
-      z-index: 3;
-    }
-
-    .tape-left {
-      top: -10px;
-      left: 18px;
-      transform: rotate(-12deg);
-    }
-
-    .tape-right {
-      top: -10px;
-      right: 18px;
-      transform: rotate(10deg);
-    }
-
-    .tape::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.25),
-        rgba(255, 255, 255, 0.25) 4px,
-        transparent 4px,
-        transparent 8px
-      );
-    }
-
-    #preview {
-      width: 100%;
-      max-height: 420px;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-      opacity: 0.8;
-    }
+    footer { text-align:center; margin-top:20px; font-size:14px; opacity:0.8; }
 
     /* ================= DECORATIONS ================= */
-    .decor {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0.9;
-      animation: float 6s ease-in-out infinite;
-      z-index: 1;
-    }
+    .decor { position:absolute; pointer-events:none; opacity:0.9; animation:float 6s ease-in-out infinite; z-index:1; }
+    .wrap > *:not(.decor) { position:relative; z-index:2; }
+    .decor.small { width:60px; }
+    .decor.medium { width:90px; }
+    .decor.top-left { top:6px; left:6px; }
+    .decor.top-right { top:6px; right:6px; }
+    .decor.bottom-left { bottom:6px; left:6px; }
+    .decor.bottom-right { bottom:6px; right:6px; }
+    @keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);} }
 
-    .wrap > *:not(.decor) {
-      position: relative;
-      z-index: 2;
-    }
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:880px){ h1{font-size:40px;} .main-container{flex-direction:column;} .photo-box{width:100%;} }
+    @media(max-width:480px){ .message p{font-size:15px; line-height:1.8; text-align:justify; hyphens:auto;} .message h2{font-size:30px;} }
 
-    .decor.small { width: 60px; }
-    .decor.medium { width: 90px; }
-
-    .decor.top-left { top: 6px; left: 6px; }
-    .decor.top-right { top: 6px; right: 6px; }
-    .decor.bottom-left { bottom: 6px; left: 6px; }
-    .decor.bottom-right { bottom: 6px; right: 6px; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-16px); }
-    }
-
-    @media (max-width: 880px) {
-  h1 {
-    font-size: 40px;
-  }
-}
-
-    @media (max-width: 480px) {
-      .message p {
-        font-size: 15px;
-        line-height: 1.8;
-        text-align: justify;
-        hyphens: auto;
-      }
-
-      .message h2 {
-        font-size: 30px;
-      }
-    }
     /* ===== BACKGROUND CURVE DECOR ===== */
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  width: 120%;
-  height: 260px;
-  left: -10%;
-  background: rgba(209, 74, 123, 0.18);
-  border-radius: 0 0 100% 100%;
-  z-index: 0;
-  pointer-events: none;
-}
+    body::before, body::after { content:""; position:fixed; width:120%; height:260px; left:-10%; background:rgba(209,74,123,0.18); border-radius:0 0 100% 100%; z-index:0; pointer-events:none; }
+    body::before { top:0; }
+    body::after { bottom:0; transform:rotate(180deg); }
 
-body::before {
-  top: 0;
-}
+    /* ===== 2 KOLOM PESAN & FOTO ===== */
+    .main-container { display:flex; gap:20px; align-items:stretch; }
+    .message-box { flex:1; width:100%; box-sizing:border-box; }
+    .photo-box { width:330px; }
+    .message-box, .photo-box { align-self:stretch; }
 
-body::after {
-  bottom: 0;
-  transform: rotate(180deg);
-}
-/* ===== 2 KOLOM PESAN & FOTO ===== */
-.main-container {
-  display: flex;
-  gap: 20px;
-  align-items: stretch;
-}
-
-.message-box {
-  flex: 1;
-}
-
-.photo-box {
-  width: 330px;
-}
-
-/* RESPONSIVE HP */
-@media (max-width: 880px) {
-  .main-container {
-    flex-direction: column;
-  }
-
-  .photo-box {
-    width: 100%;
-  }
-}
-    
-.message-box,
-.photo-box {
-  align-self: stretch;
-}
-    /* ===== SLIDE CONTROLS (IG STYLE) ===== */
-.slide-controls {
-  position: absolute; /* posisi di dalam box pesan */
-  bottom: 12px;       /* pojok bawah */
-  right: 12px;        /* pojok kanan */
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.slide-controls button {
-  background: #ffd1e6;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 20px;
-  cursor: pointer;
-  color: #d14a7b;
-  box-shadow: 0 4px 10px rgba(209, 74, 123, 0.25);
-}
-
-.slide-controls button:active {
-  transform: scale(0.9);
-}
-
-.dots {
-  display: flex;
-  gap: 6px;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  background: rgba(209, 74, 123, 0.3);
-  border-radius: 50%;
-}
-
-.dot.active {
-  background: #d14a7b;
-}
-
+    /* ===== SLIDE CONTROLS ===== */
+    .slide-controls { position:absolute; bottom:12px; right:12px; display:flex; align-items:center; gap:6px; }
+    .slide-controls button { background:#ffd1e6; border:none; width:36px; height:36px; border-radius:50%; font-size:20px; cursor:pointer; color:#d14a7b; box-shadow:0 4px 10px rgba(209,74,123,0.25); }
+    .slide-controls button:active { transform:scale(0.9); }
+    .dots { display:flex; gap:6px; }
+    .dot { width:8px; height:8px; background:rgba(209,74,123,0.3); border-radius:50%; }
+    .dot.active { background:#d14a7b; }
   </style>
 </head>
 
@@ -464,41 +214,6 @@ body::after {
       </div>
     </div>
   </div>
-<script>
-  const slider = document.querySelector(".message-slider");
-  const slides = document.querySelectorAll(".message-slide");
-  const dots = document.querySelectorAll(".dot");
-  let index = 0;
-
-  function updateSlide() {
-    slider.scrollTo({
-      left: slider.clientWidth * index,
-      behavior: "smooth"
-    });
-
-    dots.forEach(dot => dot.classList.remove("active"));
-    dots[index].classList.add("active");
-  }
-
-  document.getElementById("nextSlideBtn").onclick = () => {
-  if (index < slides.length - 1) {
-    index++;
-    updateSlide();
-  }
-};
-
-document.getElementById("prevSlideBtn").onclick = () => {
-  if (index > 0) {
-    index--;
-    updateSlide();
-  }
-};
-
-</script>
-
-  <audio id="bgm" loop>
-    <source src="alamak.mp3" type="audio/mpeg" />
-  </audio>
 
   <div class="wrap">
     <img src="babi_bunga.png" class="decor small top-left" />
@@ -511,78 +226,67 @@ document.getElementById("prevSlideBtn").onclick = () => {
     </header>
 
     <div class="content">
-  <div class="main-container">
+      <div class="main-container">
 
-   <!-- KIRI : PESAN -->
-<div class="card message-box">
-  <div class="message">
-    <h2>Hai, Gianni 👋</h2>
+        <!-- KIRI : PESAN -->
+        <div class="card message-box">
+          <div class="message">
+            <h2>Hai, Gianni 👋</h2>
+            <div class="message-slider">
+              <div class="message-slide">
+                <p>
+                  Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga,
+                  yaitu resign dari sini 🥳<br><br>
+                  Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku buat kamu,
+                  karena aku juga gatau apakah kita bakal ketemu lagi atau nggak kedepannya.
+                  Aku cuma mau bilang, makasih buat semuanya.
+                  Aku juga mau minta maaf, kalau selama kenal sama aku,
+                  banyak banget sisi buruknya, cukup ambil sisi positifnya ya (kalau ada 😅).
+                </p>
+              </div>
+              <div class="message-slide">
+                <p>
+                  Harapanku buat kamu kedepannya, semoga kamu selalu bahagia,
+                  bertemu dengan orang-orang yang baik (kaya aku 😎),
+                  selalu support kamu untuk menjadi lebih baik.
+                  Tetaplah jadi Gianni yang seperti sekarang, soalnya lucu 🤗<br><br>
+                  Sehat-sehat ya, jaga diri baik-baik, selalu rajin olahraga,
+                  jangan telat makan biar lambungnya tetap sehat,
+                  pokoknya kamu harus selalu happy ya 🤞<br><br>
+                  Udah dulu ya 😁 intinya semoga bahagia selalu &
+                  <b>See you on top 🚀✨</b>
+                </p>
+              </div>
+            </div>
 
-    <div class="message-slider">
-      <!-- SLIDE 1 -->
-      <div class="message-slide">
-        <p>
-          Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang ditunggu-tunggu akhirnya datang juga,
-          yaitu resign dari sini 🥳<br><br>
+            <div class="slide-controls">
+              <button id="prevSlideBtn">‹ Prev</button>
+              <button id="nextSlideBtn">Next ›</button>
+              <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku buat kamu,
-          karena aku juga gatau apakah kita bakal ketemu lagi atau nggak kedepannya.
-          Aku cuma mau bilang, makasih buat semuanya.
-          Aku juga mau minta maaf, kalau selama kenal sama aku,
-          banyak banget sisi buruknya, cukup ambil sisi positifnya ya (kalau ada 😅).
-        </p>
+        <!-- KANAN : FOTO -->
+        <div class="card polaroid tape-wrap photo-box">
+          <span class="tape tape-left"></span>
+          <span class="tape tape-right"></span>
+          <img id="preview" src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg" alt="Foto kita" />
+        </div>
       </div>
-
-      <!-- SLIDE 2 -->
-      <div class="message-slide">
-        <p>
-          Harapanku buat kamu kedepannya, semoga kamu selalu bahagia,
-          bertemu dengan orang-orang yang baik (kaya aku 😎),
-          selalu support kamu untuk menjadi lebih baik.
-          Tetaplah jadi Gianni yang seperti sekarang, soalnya lucu 🤗<br><br>
-
-          Sehat-sehat ya, jaga diri baik-baik, selalu rajin olahraga,
-          jangan telat makan biar lambungnya tetap sehat,
-          pokoknya kamu harus selalu happy ya 🤞<br><br>
-
-          Udah dulu ya 😁 intinya semoga bahagia selalu &
-          <b>See you on top 🚀✨</b>
-        </p>
-      </div>
-    </div> <!-- tutup message-slider -->
-
-   <!-- Tambahkan tombol di sini -->
-<div class="slide-controls">
-  <button id="prevSlideBtn">‹ Prev</button>
-  <button id="nextSlideBtn">Next ›</button>
-  <div class="dots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-  </div>
-  
-  </div> <!-- tutup message -->
-</div> <!-- tutup card message-box -->
-
-      
-    <!-- KANAN : FOTO -->
-    <div class="card polaroid tape-wrap photo-box">
-      <span class="tape tape-left"></span>
-      <span class="tape tape-right"></span>
-      <img
-        id="preview"
-        src="https://raw.githubusercontent.com/DikdikNadiansyah/Buat-kamu/main/foto_kita.jpg"
-        alt="Foto kita"
-      />
     </div>
 
-  </div>
-</div>
-
     <footer>
-      Made with lots of piggy love 🐷✨<br />
-      @hai_dikdik
+      Made with lots of piggy love 🐷✨<br />@hai_dikdik
     </footer>
   </div>
+
+  <audio id="bgm" loop>
+    <source src="alamak.mp3" type="audio/mpeg" />
+  </audio>
 
   <script>
     const start = document.getElementById("startScreen");
@@ -592,27 +296,38 @@ document.getElementById("prevSlideBtn").onclick = () => {
     envelope.addEventListener("click", () => {
       audio.play();
       envelope.classList.add("open");
-
       setTimeout(() => (start.style.opacity = "0"), 600);
       setTimeout(() => (start.style.display = "none"), 1000);
     });
 
     /* SNOW GENERATOR */
     const snowContainer = document.querySelector(".snow-container");
-
     for (let i = 0; i < 40; i++) {
       const snow = document.createElement("div");
       snow.className = "snow";
-
       const size = Math.random() * 6 + 4;
       snow.style.width = size + "px";
       snow.style.height = size + "px";
       snow.style.left = Math.random() * 100 + "vw";
       snow.style.animationDuration = Math.random() * 5 + 5 + "s";
       snow.style.animationDelay = Math.random() * 5 + "s";
-
       snowContainer.appendChild(snow);
     }
+
+    /* SLIDER */
+    const slider = document.querySelector(".message-slider");
+    const slides = document.querySelectorAll(".message-slide");
+    const dots = document.querySelectorAll(".dot");
+    let index = 0;
+
+    function updateSlide() {
+      slider.scrollTo({ left: slider.clientWidth * index, behavior: "smooth" });
+      dots.forEach(dot => dot.classList.remove("active"));
+      dots[index].classList.add("active");
+    }
+
+    document.getElementById("nextSlideBtn").onclick = () => { if (index < slides.length - 1) { index++; updateSlide(); } };
+    document.getElementById("prevSlideBtn").onclick = () => { if (index > 0) { index--; updateSlide(); } };
   </script>
 </body>
 </html>
