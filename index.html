@@ -146,8 +146,17 @@
     .message p { font-family:"Patrick Hand", cursive; font-size:17px; line-height:1.9; letter-spacing:0.4px; color:#6a1f3d; text-align:justify; white-space:normal; word-break:break-word; width:100%; box-sizing:border-box; margin-bottom:16px; }
 
     /* ================= MESSAGE SLIDER ================= */
-    .message-slider { display:flex; width:100%; overflow-x:hidden; transition: height 0.3s ease; }
-    .message-slide { min-width:100%; flex-shrink:0; box-sizing: border-box; }
+ .message-slider {
+  display: flex;
+  width: 200%; /* 2 slide = 200% */
+  transition: transform 0.5s ease, height 0.3s ease;
+}
+
+.message-slide {
+  width: 50%; /* 100% / 2 slide */
+  box-sizing: border-box;
+  padding-right: 6px;
+}
 
     .message-slider::-webkit-scrollbar { height:6px; }
     .message-slider::-webkit-scrollbar-thumb { background: rgba(209, 74, 123, 0.3); border-radius: 10px; }
@@ -325,7 +334,7 @@
   }
 
   function updateSlide() {
-    slider.style.transform = `translateX(-${index * 100}%)`;
+    slider.style.transform = `translateX(-${index * 50}%)`;
     dots.forEach(dot => dot.classList.remove("active"));
     dots[index].classList.add("active");
     updateHeight();
@@ -352,5 +361,6 @@
   </script>
 </body>
 </html>
+
 
 
