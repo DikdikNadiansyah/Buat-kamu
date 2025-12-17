@@ -240,8 +240,27 @@
   gap: 6px;
   align-items: center;
 }
-    .dot { width:8px; height:8px; background:rgba(209,74,123,0.3); border-radius:50%; }
-    .dot.active { background:#d14a7b; }
+    .dot {
+  font-size: 14px;
+  line-height: 1;
+  color: rgba(209,74,123,0.35);
+  cursor: pointer;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.dot::before {
+  content: "♡";
+}
+
+.dot.active {
+  color: #d14a7b;
+  transform: scale(1.3);
+}
+
+.dot.active::before {
+  content: "♥";
+}
+
   </style>
 </head>
 
@@ -409,8 +428,3 @@
 
 </body>
 </html>
-
-
-
-
-
