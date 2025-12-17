@@ -201,22 +201,28 @@
     .photo-box { width:330px; }
     .message-box, .photo-box { align-self:stretch; }
 
-    /* ===== SLIDE CONTROLS ===== */
-    .slide-controls {
+/* ===== SLIDE CONTROLS (CENTER RAPI) ===== */
+.slide-controls {
   position: absolute;
-  bottom: 12px;
+  bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 12px;
 }
 .slide-controls button {
-  min-width: 40px;
+  min-width: 64px;
+  height: 34px;
+  border-radius: 18px;
+  font-size: 14px;
 }
 
 .dots {
-  margin: 0 6px;
+  display: flex;
+  gap: 6px;
+  margin: 0 4px;
 }
     .slide-controls button { background:#ffd1e6; border:none; width:36px; height:36px; border-radius:50%; font-size:20px; cursor:pointer; color:#d14a7b; box-shadow:0 4px 10px rgba(209,74,123,0.25); }
     .slide-controls button:active { transform:scale(0.9); }
@@ -388,5 +394,6 @@
 
 </body>
 </html>
+
 
 
