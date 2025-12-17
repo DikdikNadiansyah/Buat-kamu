@@ -190,11 +190,6 @@
     @media(max-width:880px){ h1{font-size:40px;} .main-container{flex-direction:column;} .photo-box{width:100%;} }
     @media(max-width:480px){ .message p{font-size:15px; line-height:1.8; text-align:justify; hyphens:auto;} .message h2{font-size:30px;} }
 
-    /* ===== BACKGROUND CURVE DECOR ===== */
-    body::before, body::after { content:""; position:fixed; width:120%; height:260px; left:-10%; background:rgba(209,74,123,0.18); border-radius:0 0 100% 100%; z-index:0; pointer-events:none; }
-    body::before { top:0; }
-    body::after { bottom:0; transform:rotate(180deg); }
-
     /* ===== 2 KOLOM PESAN & FOTO ===== */
     .main-container { display:flex; gap:20px; align-items:stretch; }
     .message-box { flex:1; width:100%; box-sizing:border-box; }
@@ -442,4 +437,5 @@ body::after {
 
 </body>
 </html>
+
 
