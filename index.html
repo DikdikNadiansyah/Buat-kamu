@@ -298,9 +298,9 @@ body::after {
 /* ===== LOADING SCENE ===== */
 .loading-scene {
   position: absolute;
-  top: calc(50% + 140px);
+  top: 65%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: 260px;
   text-align: center;
   opacity: 0;
@@ -506,9 +506,10 @@ envelope.addEventListener("click", () => {
   loadingScene.classList.add("show-loading");
 
   // babi lompat keluar
-  setTimeout(() => {
-    pig.classList.add("pig-jump");
-  }, 300);
+setTimeout(() => {
+  pig.style.opacity = "1";
+  pig.classList.add("pig-jump");
+}, 300);
 
   // mulai loading
   let progress = 0;
@@ -588,5 +589,6 @@ envelope.addEventListener("click", () => {
 
 </body>
 </html>
+
 
 
