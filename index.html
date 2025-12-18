@@ -295,6 +295,84 @@ body::after {
 
   opacity: 0.4;
 }
+/* ===== LOADING SCENE ===== */
+.loading-scene {
+  position: absolute;
+  top: calc(50% + 140px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* PIG */
+.pig {
+  font-size: 42px;
+  margin-bottom: 10px;
+  transform: translateY(20px) scale(0.5);
+  opacity: 0;
+}
+
+/* BAR */
+.loading-bar {
+  width: 100%;
+  height: 10px;
+  background: #ffd1e6;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.loading-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff8fb8, #d14a7b);
+  border-radius: 999px;
+}
+
+/* TEXT */
+.loading-text {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #d14a7b;
+}
+
+/* ===== ANIMATIONS ===== */
+.show-loading {
+  opacity: 1;
+}
+
+.pig-jump {
+  animation: pigJump 0.6s ease forwards;
+}
+
+@keyframes pigJump {
+  0% {
+    transform: translateY(20px) scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-20px) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.pig-run {
+  animation: pigRunBar 2.2s linear forwards;
+}
+
+@keyframes pigRunBar {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(200px);
+  }
+}
 
   </style>
 </head>
@@ -313,7 +391,17 @@ body::after {
         </div>
       </div>
     </div>
+      <!-- 🐷 LOADING SCENE (TAMBAHAN BARU) -->
+  <div class="loading-scene" id="loadingScene">
+    <div class="pig" id="pig">🐷</div>
+
+    <div class="loading-bar">
+      <div class="loading-fill" id="loadingFill"></div>
+    </div>
+
+    <div class="loading-text" id="loadingText">0%</div>
   </div>
+</div>
 
   <div class="wrap">
     <img src="babi_bunga.png" class="decor small top-left" />
@@ -400,17 +488,52 @@ body::after {
     <source src="alamak.mp3" type="audio/mpeg" />
   </audio>
 
-  <script>
-    const start = document.getElementById("startScreen");
-    const envelope = document.querySelector(".envelope");
-    const audio = document.getElementById("bgm");
+<script>
+  const start = document.getElementById("startScreen");
+  const envelope = document.querySelector(".envelope");
+  const audio = document.getElementById("bgm");
 
-    envelope.addEventListener("click", () => {
-      audio.play();
-      envelope.classList.add("open");
-      setTimeout(() => (start.style.opacity = "0"), 600);
-      setTimeout(() => (start.style.display = "none"), 1000);
-    });
+  const loadingScene = document.getElementById("loadingScene");
+  const pig = document.getElementById("pig");
+  const fill = document.getElementById("loadingFill");
+  const text = document.getElementById("loadingText");
+
+envelope.addEventListener("click", () => {
+  audio.play();
+  envelope.classList.add("open");
+
+  // munculin loading
+  loadingScene.classList.add("show-loading");
+
+  // babi lompat keluar
+  setTimeout(() => {
+    pig.classList.add("pig-jump");
+  }, 300);
+
+  // mulai loading
+  let progress = 0;
+  const loadingInterval = setInterval(() => {
+    progress++;
+    fill.style.width = progress + "%";
+    text.innerText = progress + "%";
+    
+    if (progress === 10) {
+  pig.classList.add("pig-run");
+}
+
+    if (progress >= 100) {
+      clearInterval(loadingInterval);
+
+      // masuk ke halaman utama
+      setTimeout(() => {
+        start.style.opacity = "0";
+        setTimeout(() => {
+          start.style.display = "none";
+        }, 600);
+      }, 300);
+    }
+  }, 25);
+});
 
     /* SNOW GENERATOR */
     const snowContainer = document.querySelector(".snow-container");
@@ -465,4 +588,5 @@ body::after {
 
 </body>
 </html>
+
 
