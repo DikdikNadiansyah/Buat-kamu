@@ -309,7 +309,7 @@ body::after {
 
 /* PIG */
 .pig {
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1;
   margin: 0 auto 10px;
   width: fit-content;
@@ -362,28 +362,6 @@ body::after {
   }
   100% {
     transform: translateY(0) scale(1);
-  }
-}
-
-.pig-run {
-  animation: pigRunBar 2.2s linear forwards;
-}
-
-@keyframes pigRunBar {
-  0% {
-    transform: translateX(0) translateY(0) scale(1);
-  }
-  25% {
-    transform: translateX(45px) translateY(-6px) scale(1);
-  }
-  50% {
-    transform: translateX(90px) translateY(0) scale(1);
-  }
-  75% {
-    transform: translateX(135px) translateY(-6px) scale(1);
-  }
-  100% {
-    transform: translateX(180px) translateY(0) scale(1);
   }
 }
 
@@ -530,10 +508,6 @@ setTimeout(() => {
     fill.style.width = progress + "%";
     text.innerText = progress + "%";
     
-    if (progress === 10) {
-  pig.classList.add("pig-run");
-}
-
     if (progress >= 100) {
       clearInterval(loadingInterval);
 
@@ -601,4 +575,5 @@ setTimeout(() => {
 
 </body>
 </html>
+
 
