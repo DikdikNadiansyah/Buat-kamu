@@ -309,12 +309,15 @@ body::after {
 
 /* PIG */
 .pig {
-  font-size: 24px;
+  position: absolute;
+  left: 0;
+  top: -34px;
+
+  font-size: 28px;
   line-height: 1;
-  margin: 0 auto 10px;
   width: fit-content;
 
-  transform: translateY(20px) scale(0.5);
+  transform: translateX(0) translateY(20px) scale(0.5);
   opacity: 0;
 }
 
@@ -346,22 +349,17 @@ body::after {
 .show-loading {
   opacity: 1;
 }
-
-.pig-jump {
+    .pig-jump {
   animation: pigJump 0.6s ease forwards;
+  animation-fill-mode: forwards;
 }
 
 @keyframes pigJump {
   0% {
-    transform: translateY(20px) scale(0.5);
     opacity: 0;
   }
-  60% {
-    transform: translateY(-20px) scale(1.1);
-    opacity: 1;
-  }
   100% {
-    transform: translateY(0) scale(1);
+    opacity: 1;
   }
 }
 
@@ -384,9 +382,9 @@ body::after {
     </div>
       <!-- 🐷 LOADING SCENE (TAMBAHAN BARU) -->
   <div class="loading-scene" id="loadingScene">
-    <div class="pig" id="pig">🐷</div>
     <div class="loading-bar">
-      <div class="loading-fill" id="loadingFill"></div>
+    <div class="pig" id="pig">🐷</div>
+    <div class="loading-fill" id="loadingFill"></div>
     </div>
 
     <div class="loading-text" id="loadingText">0%</div>
@@ -507,11 +505,19 @@ setTimeout(() => {
     progress++;
     fill.style.width = progress + "%";
     text.innerText = progress + "%";
+  const bar = document.querySelector(".loading-bar");
+  const barWidth = bar.offsetWidth;
+  const pigWidth = pig.offsetWidth;
+
+  const maxX = barWidth - pigWidth;
+  const posX = (progress / 100) * maxX;
+
+  pig.style.transform = `translateX(${posX}px) translateY(0) scale(1)`;
     
     if (progress >= 100) {
       clearInterval(loadingInterval);
-
-      // masuk ke halaman utama
+     
+        // masuk ke halaman utama
       setTimeout(() => {
         start.style.opacity = "0";
         setTimeout(() => {
@@ -575,5 +581,6 @@ setTimeout(() => {
 
 </body>
 </html>
+
 
 
