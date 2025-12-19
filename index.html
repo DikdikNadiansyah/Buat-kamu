@@ -309,10 +309,10 @@ body::after {
 
 /* PIG */
 .pig {
-  width: 64px;
-  height: auto;
+  font-size: 42px;
+  line-height: 1;
   margin: 0 auto 10px;
-  display: block;
+  width: fit-content;
 
   transform: translateY(20px) scale(0.5);
   opacity: 0;
@@ -370,10 +370,19 @@ body::after {
 }
 
 @keyframes pigRunBar {
-  from {
+  0% {
     transform: translateX(0) translateY(0) scale(1);
   }
-  to {
+  25% {
+    transform: translateX(45px) translateY(-6px) scale(1);
+  }
+  50% {
+    transform: translateX(90px) translateY(0) scale(1);
+  }
+  75% {
+    transform: translateX(135px) translateY(-6px) scale(1);
+  }
+  100% {
     transform: translateX(180px) translateY(0) scale(1);
   }
 }
@@ -397,14 +406,7 @@ body::after {
     </div>
       <!-- 🐷 LOADING SCENE (TAMBAHAN BARU) -->
   <div class="loading-scene" id="loadingScene">
-    <img
-  src="babi_lari.gif"
-  class="pig"
-  id="pig"
-  alt="Babi lagi lari"
-/>
-
-
+    <div class="pig" id="pig">🐷</div>
     <div class="loading-bar">
       <div class="loading-fill" id="loadingFill"></div>
     </div>
@@ -599,7 +601,3 @@ setTimeout(() => {
 
 </body>
 </html>
-
-
-
-
