@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Gianni Tardellie</title>
 
   <link
@@ -21,7 +20,6 @@
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      position: relative; /* ✅ TAMBAH INI */
     }
 
     /* ================= ENVELOPE ================= */
@@ -91,23 +89,13 @@
     }
 
     @keyframes pulse {
-      0%,
-      100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     @keyframes floatEnvelope {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-12px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
 
     /* ================= MAIN THEME ================= */
@@ -154,9 +142,7 @@
     }
 
     @keyframes fall {
-      to {
-        transform: translateY(110vh);
-      }
+      to { transform: translateY(110vh); }
     }
 
     .wrap {
@@ -193,188 +179,12 @@
       overflow: hidden;
     }
 
-    /* ================= MESSAGE BOX ================= */
-    .message {
-      position: relative;
-      overflow: hidden;
-      border: 2px dashed rgba(209, 74, 123, 0.16);
-      padding: 18px 20px 48px;
-      border-radius: 12px;
-    }
-
-    .message h2 {
-      font-family: "Sacramento", cursive;
-      font-size: 34px;
-      margin: 0 0 14px 0;
-      color: #d14a7b;
-      text-align: left;
-    }
-
-    .message p {
-      font-family: "Patrick Hand", cursive;
-      font-size: 17px;
-      line-height: 1.9;
-      letter-spacing: 0.4px;
-      color: #6a1f3d;
-      text-align: justify;
-      white-space: normal;
-      word-break: break-word;
-      width: 100%;
-      box-sizing: border-box;
-      margin-bottom: 16px;
-    }
-
-    /* ================= MESSAGE SLIDER ================= */
-    .message-slider {
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .message-track {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-
-    .message-slide {
-      min-width: 100%;
-      box-sizing: border-box;
-    }
-
-    .message-slider::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .message-slider::-webkit-scrollbar-thumb {
-      background: rgba(209, 74, 123, 0.3);
-      border-radius: 10px;
-    }
-
-    /* ================= POLAROID ================= */
-    .polaroid {
-      background: linear-gradient(145deg, #ffe4ef, #ffd1e6);
-      padding: 16px;
-      border-radius: 16px;
-      box-shadow: 0 18px 40px rgba(209, 74, 123, 0.25),
-        inset 0 0 0 2px rgba(255, 255, 255, 0.8);
-      transform: rotate(1deg);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .tape-wrap {
-      position: relative;
-    }
-
-    .tape {
-      position: absolute;
-      width: 70px;
-      height: 26px;
-      background: rgba(255, 255, 255, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(2px);
-      z-index: 3;
-    }
-
-    .tape-left {
-      top: -10px;
-      left: 18px;
-      transform: rotate(-12deg);
-    }
-
-    .tape-right {
-      top: -10px;
-      right: 18px;
-      transform: rotate(10deg);
-    }
-
-    .tape::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.25),
-        rgba(255, 255, 255, 0.25) 4px,
-        transparent 4px,
-        transparent 8px
-      );
-    }
-
-    #preview {
-      width: 100%;
-      max-height: 420px;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-      opacity: 0.8;
-    }
-
-    /* ================= DECORATIONS ================= */
-    .decor {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0.9;
-      animation: float 6s ease-in-out infinite;
-      z-index: 1;
-    }
-
-    .wrap > *:not(.decor) {
-      position: relative;
-      z-index: 2;
-    }
-
-    .decor.small {
-      width: 60px;
-    }
-
-    .decor.medium {
-      width: 90px;
-    }
-
-    .decor.top-left {
-      top: 6px;
-      left: 6px;
-    }
-
-    .decor.top-right {
-      top: 6px;
-      right: 6px;
-    }
-
-    .decor.bottom-left {
-      bottom: 6px;
-      left: 6px;
-    }
-
-    .decor.bottom-right {
-      bottom: 6px;
-      right: 6px;
-    }
-
-    @keyframes float {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-16px);
-      }
-    }
-  </style>
+      </style>
 </head>
 
-  <body>
-  <!-- SNOW -->
+<body>
   <div class="snow-container"></div>
 
-  <!-- START SCREEN -->
   <div id="startScreen">
     <div class="envelope">
       <div class="letter">
@@ -385,7 +195,6 @@
       </div>
     </div>
 
-    <!-- 🐷 LOADING SCENE -->
     <div class="loading-scene" id="loadingScene">
       <div class="loading-bar">
         <div class="pig" id="pig">🐷</div>
@@ -395,7 +204,6 @@
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
   <div class="wrap">
     <img src="babi_bunga.png" class="decor small top-left" />
     <img src="babi_ketawa.gif" class="decor medium top-right" />
@@ -408,7 +216,6 @@
 
     <div class="content">
       <div class="main-container">
-        <!-- KIRI : PESAN -->
         <div class="card message-box">
           <div class="message">
             <h2>Hai, Gianni 👋</h2>
@@ -417,32 +224,39 @@
               <div class="message-track">
                 <div class="message-slide">
                   <p>
-                    Gak kerasa ya, sekarang udah jadi alumni J&T 😁 momen yang
-                    ditunggu-tunggu akhirnya datang juga, yaitu resign dari sini
-                    🥳<br /><br />
-                    Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir dari aku
-                    buat kamu, karena aku juga gatau apakah kita bakal ketemu lagi
-                    atau nggak kedepannya. Aku cuma mau bilang, makasih buat
-                    semuanya. Aku juga mau minta maaf, kalau selama kenal sama aku,
-                    banyak banget sisi buruknya, cukup ambil sisi positifnya ya
-                    (kalau ada 😅).<br /><br />
+                    Gak kerasa ya, sekarang udah jadi alumni J&T 😁
+                    momen yang ditunggu-tunggu akhirnya datang juga,
+                    yaitu resign dari sini 🥳<br><br>
+
+                    Oh iya, mungkin ini bakal jadi pesan/hadiah terakhir
+                    dari aku buat kamu, karena aku juga gatau apakah
+                    kita bakal ketemu lagi atau nggak kedepannya.
+                    Aku cuma mau bilang, makasih buat semuanya.
+                    Aku juga mau minta maaf, kalau selama kenal sama aku,
+                    banyak banget sisi buruknya, cukup ambil sisi positifnya
+                    ya (kalau ada 😅).<br><br>
+
                     Harapanku buat kamu kedepannya, semoga kamu selalu bahagia,
-                    bertemu dengan orang-orang yang baik (kaya aku 😎), selalu
-                    support kamu untuk menjadi lebih baik.
+                    bertemu dengan orang-orang yang baik (kaya aku 😎),
+                    selalu support kamu untuk menjadi lebih baik.
                   </p>
                 </div>
 
                 <div class="message-slide">
                   <p>
-                    Tetaplah jadi Gianni yang seperti sekarang, soalnya lucu
-                    🤗<br /><br />
-                    Sehat-sehat ya, jaga diri baik-baik, selalu rajin olahraga,
-                    jangan telat makan biar lambungnya tetap sehat, pokoknya kamu
-                    harus selalu happy ya 🤞<br /><br />
-                    Jika kedepannya kamu butuh tempat untuk
-                    cerita/sharing/discuss, atau butuh tempat buat melampiaskan
-                    unek-unekmu, kamu bisa chat aku, yang penting kamu merasa
-                    baikan, jangan semuanya ditanggung sendiri ya.<br /><br />
+                    Tetaplah jadi Gianni yang seperti sekarang,
+                    soalnya lucu 🤗<br><br>
+
+                    Sehat-sehat ya, jaga diri baik-baik,
+                    selalu rajin olahraga, jangan telat makan
+                    biar lambungnya tetap sehat,
+                    pokoknya kamu harus selalu happy ya 🤞<br><br>
+
+                    Jika kedepannya kamu butuh tempat untuk cerita,
+                    sharing, discuss, atau melampiaskan unek-unekmu,
+                    kamu bisa chat aku, yang penting kamu merasa baikan,
+                    jangan semuanya ditanggung sendiri ya.<br><br>
+
                     Intinya semoga bahagia selalu &
                     <b>See you on top 🚀✨</b>
                   </p>
@@ -452,18 +266,15 @@
 
             <div class="slide-controls">
               <button id="prevSlideBtn">‹ Prev</button>
-
               <div class="dots">
                 <span class="dot active"></span>
                 <span class="dot"></span>
               </div>
-
               <button id="nextSlideBtn">Next ›</button>
             </div>
           </div>
         </div>
 
-        <!-- KANAN : FOTO -->
         <div class="card polaroid tape-wrap photo-box">
           <span class="tape tape-left"></span>
           <span class="tape tape-right"></span>
@@ -482,15 +293,14 @@
     </footer>
   </div>
 
-  <audio id="bgm" loop>
+    <audio id="bgm" loop>
     <source src="alamak.mp3" type="audio/mpeg" />
   </audio>
 
-      <script>
+  <script>
     const start = document.getElementById("startScreen");
     const envelope = document.querySelector(".envelope");
     const audio = document.getElementById("bgm");
-
     const loadingScene = document.getElementById("loadingScene");
     const pig = document.getElementById("pig");
     const fill = document.getElementById("loadingFill");
@@ -499,17 +309,13 @@
     envelope.addEventListener("click", () => {
       audio.play();
       envelope.classList.add("open");
-
-      // munculin loading
       loadingScene.classList.add("show-loading");
 
-      // babi lompat keluar
       setTimeout(() => {
         pig.style.opacity = "1";
         pig.classList.add("pig-jump");
       }, 300);
 
-      // mulai loading
       let progress = 0;
       const loadingInterval = setInterval(() => {
         progress++;
@@ -519,16 +325,14 @@
         const bar = document.querySelector(".loading-bar");
         const barWidth = bar.offsetWidth;
         const pigWidth = pig.offsetWidth;
-
         const maxX = barWidth - pigWidth;
         const posX = (progress / 100) * maxX;
 
-        pig.style.transform = `translateX(${posX}px) translateY(0) scale(1)`;
+        pig.style.transform =
+          `translateX(${posX}px) translateY(0) scale(1)`;
 
         if (progress >= 100) {
           clearInterval(loadingInterval);
-
-          // masuk ke halaman utama
           setTimeout(() => {
             start.style.opacity = "0";
             setTimeout(() => {
@@ -539,28 +343,22 @@
       }, 25);
     });
 
-    /* SNOW GENERATOR */
     const snowContainer = document.querySelector(".snow-container");
     for (let i = 0; i < 40; i++) {
       const snow = document.createElement("div");
       snow.className = "snow";
-
       const size = Math.random() * 6 + 4;
       snow.style.width = size + "px";
       snow.style.height = size + "px";
       snow.style.left = Math.random() * 100 + "vw";
       snow.style.animationDuration = Math.random() * 5 + 5 + "s";
       snow.style.animationDelay = Math.random() * 5 + "s";
-
       snowContainer.appendChild(snow);
     }
 
-    /* SLIDER */
-    const slider = document.querySelector(".message-slider");
     const track = document.querySelector(".message-track");
     const slides = document.querySelectorAll(".message-slide");
     const dots = document.querySelectorAll(".dot");
-
     let index = 0;
 
     function updateHeight() {
@@ -570,7 +368,7 @@
 
     function updateSlide() {
       track.style.transform = `translateX(-${index * 100}%)`;
-      dots.forEach((dot) => dot.classList.remove("active"));
+      dots.forEach(dot => dot.classList.remove("active"));
       dots[index].classList.add("active");
       updateHeight();
     }
@@ -589,7 +387,6 @@
       }
     };
 
-    // SET AWAL
     window.addEventListener("load", updateHeight);
   </script>
 </body>
