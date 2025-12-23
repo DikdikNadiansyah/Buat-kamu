@@ -312,13 +312,13 @@ body::after {
 
 /* PIG */
 .pig {
-  font-size: 26px;        /* ukuran kepala babi */
+  font-size: 26px;
   line-height: 1;
-  position: absolute;    /* wajib supaya bisa geser kiri-kanan */
-  top: -22px;             /* posisinya di atas loading bar */
+  position: absolute;
+  top: -22px;
   left: 0;
-  transform: translateY(0);
-  transition: left 0.1s linear, transform 0.15s ease;
+
+  transition: left 0.12s linear;
   opacity: 1;
   pointer-events: none;
   z-index: 2;
@@ -351,24 +351,6 @@ body::after {
 /* ===== ANIMATIONS ===== */
 .show-loading {
   opacity: 1;
-}
-
-.pig-jump {
-  animation: pigJump 0.6s ease forwards;
-}
-
-@keyframes pigJump {
-  0% {
-    transform: translateY(20px) scale(0.5);
-    opacity: 0;
-  }
-  60% {
-    transform: translateY(-20px) scale(1.1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(0) scale(1);
-  }
 }
 
   </style>
@@ -494,37 +476,31 @@ body::after {
   const fill = document.getElementById("loadingFill");
   const text = document.getElementById("loadingText");
 
+  const bar = document.querySelector(".loading-bar");
+
 envelope.addEventListener("click", () => {
   audio.play();
   envelope.classList.add("open");
-
-  // munculin loading
   loadingScene.classList.add("show-loading");
 
-  // babi lompat keluar
-  setTimeout(() => {
-    pig.style.opacity = "1";
-    pig.classList.add("pig-jump");
-  }, 300);
-
-  // mulai loading
   let progress = 0;
+
+  const pigWidth = pig.offsetWidth;
+  const barWidth = bar.offsetWidth;
+  const maxX = barWidth - pigWidth;
+
   const loadingInterval = setInterval(() => {
     progress++;
 
-    // update bar & %
     fill.style.width = progress + "%";
     text.innerText = progress + "%";
 
-    // 🐷 ikut progress
-    pig.style.left = `calc(${progress}% - 13px)`;
-    pig.style.transform =
-      progress % 5 === 0 ? "translateY(-4px)" : "translateY(0)";
+    // 🐷 posisi aman, gak kepotong
+    const x = (progress / 100) * maxX;
+    pig.style.left = x + "px";
 
     if (progress >= 100) {
       clearInterval(loadingInterval);
-
-      // hilangkan start screen
       setTimeout(() => {
         start.style.opacity = "0";
         setTimeout(() => {
@@ -588,5 +564,3 @@ envelope.addEventListener("click", () => {
 
 </body>
 </html>
-
-
