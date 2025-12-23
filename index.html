@@ -309,13 +309,15 @@ body::after {
 
 /* PIG */
 .pig {
-  font-size: 42px;
+  font-size: 26px;        /* ukuran kepala babi */
   line-height: 1;
-  margin: 0 auto 10px;
-  width: fit-content;
-
-  transform: translateY(20px) scale(0.5);
-  opacity: 0;
+  position: absolute;    /* wajib supaya bisa geser kiri-kanan */
+  top: -22px;             /* posisinya di atas loading bar */
+  left: 0;
+  transform: translateY(0);
+  transition: left 0.1s linear, transform 0.15s ease;
+  opacity: 1;
+  pointer-events: none;
 }
 
 /* BAR */
@@ -365,28 +367,6 @@ body::after {
   }
 }
 
-.pig-run {
-  animation: pigRunBar 2.2s linear forwards;
-}
-
-@keyframes pigRunBar {
-  0% {
-    transform: translateX(0) translateY(0) scale(1);
-  }
-  25% {
-    transform: translateX(45px) translateY(-6px) scale(1);
-  }
-  50% {
-    transform: translateX(90px) translateY(0) scale(1);
-  }
-  75% {
-    transform: translateX(135px) translateY(-6px) scale(1);
-  }
-  100% {
-    transform: translateX(180px) translateY(0) scale(1);
-  }
-}
-
   </style>
 </head>
 
@@ -406,8 +386,8 @@ body::after {
     </div>
       <!-- 🐷 LOADING SCENE (TAMBAHAN BARU) -->
   <div class="loading-scene" id="loadingScene">
-    <div class="pig" id="pig">🐷</div>
     <div class="loading-bar">
+    <div class="pig" id="pig">🐷</div>
       <div class="loading-fill" id="loadingFill"></div>
     </div>
 
@@ -518,26 +498,29 @@ envelope.addEventListener("click", () => {
   loadingScene.classList.add("show-loading");
 
   // babi lompat keluar
-setTimeout(() => {
-  pig.style.opacity = "1";
-  pig.classList.add("pig-jump");
-}, 300);
+  setTimeout(() => {
+    pig.style.opacity = "1";
+    pig.classList.add("pig-jump");
+  }, 300);
 
   // mulai loading
   let progress = 0;
   const loadingInterval = setInterval(() => {
     progress++;
+
+    // update bar & %
     fill.style.width = progress + "%";
     text.innerText = progress + "%";
-    
-    if (progress === 10) {
-  pig.classList.add("pig-run");
-}
+
+    // 🐷 ikut progress
+    pig.style.left = `calc(${progress}% - 13px)`;
+    pig.style.transform =
+      progress % 5 === 0 ? "translateY(-4px)" : "translateY(0)";
 
     if (progress >= 100) {
       clearInterval(loadingInterval);
 
-      // masuk ke halaman utama
+      // hilangkan start screen
       setTimeout(() => {
         start.style.opacity = "0";
         setTimeout(() => {
