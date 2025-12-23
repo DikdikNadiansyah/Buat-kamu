@@ -32,6 +32,7 @@
       box-shadow: 0 18px 40px rgba(209, 74, 123, 0.35);
       cursor: pointer;
       animation: floatEnvelope 2.4s ease-in-out infinite;
+      z-index: 1;
     }
 
     .envelope:active { transform: scale(0.95); }
@@ -305,6 +306,8 @@ body::after {
   text-align: center;
   opacity: 0;
   pointer-events: none;
+
+  z-index: 10000; /* 🔥 PENTING */
 }
 
 /* PIG */
@@ -318,6 +321,7 @@ body::after {
   transition: left 0.1s linear, transform 0.15s ease;
   opacity: 1;
   pointer-events: none;
+  z-index: 2;
 }
 
 /* BAR */
